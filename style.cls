@@ -9,7 +9,7 @@
 \usepackage{fancyhdr}
 \usepackage{amsmath}
 
-
-
+\usepackage{natbib}
+\bibliographystyle{plain}
 
 \endinput

@@ -1,13 +1,8 @@
-%        File: main.tex
-%     Created: Thu Jul 06 11:00 PM 2017 C
-% Last Change: Thu Jul 06 11:00 PM 2017 C
-%
 \documentclass{style}
 
-\usepackage{natbib}
-\bibliographystyle{plain}
-
 \begin{document}
+    \section{Introduction}
+    
 	\section{Theoretical basics}
 	\subsection{Conventions}
 	Throughout this work natural units will be used, so that
@@ -33,8 +28,34 @@
 	
 	\subsection{Mesons}
 	
-	\subsection{Distillation}
-	df
+	\newpage
+	
+	\section{Distillation}
+	% descibe distillation
+	The term distillation describes a quark-field smearing algorithm to compute hadron correlation functions. It was first described in 2009 by Michael Peardon \cite{distillation_paper}. Distillation promisises efficient computations of all-to-all quark propagators.\\
+	
+	Smearing is used to apply a smoothing function to the field before applying the creation operators. Smearing should remove short-range modes while keeping as many symmetries as possible. Distillation makes use of a gauge-covariant quark smearing based on the lattice Laplacian which is defined as follows
+	\begin{equation}
+	    -\nabla^2_{xy} = 6\delta_{xy} - \sum^3_{j=1}(\tilde{U}_j(x,t)\delta_{x+j,y} + \tilde{U}^\dagger_j(x-y,t)\delta_{x-j,y})
+	\end{equation}
+	
+	Starting form the lattice Laplacian one can define a simple smearing operator
+	\begin{equation}
+	    J_{\omega,n}(t) = (1+\frac{\omega\nabla^2(t)}{n})^n
+	\end{equation}
+	
+	$\omega$ and $n$ are tunable parameters. For large $n$, $J$ defines the exponential of $\omega\nabla^2$ which suppresses higher eigenmodes of the lapplacian hence only a few of the lowest modes contribute to J. % WHY?
+	\begin{equation}
+        \lim_{n\rightarrow\infty} J_{\omega,n}(t) = \exp(\omega\nabla^2)
+	\end{equation}
+	
+	% decribe the different calculations in program
+	
+	\section{Implementation}
+	
+	\section{Results}
+	
+	\section{Discussion}
 	
 	\bibliography{ref}
 	
