@@ -12,4 +12,10 @@
 \usepackage{natbib}
 \bibliographystyle{plain}
 
+%
+% Symbols
+%
+\newcommand{\Lagr}{\mathcal{L}}
+\newcommand{\GaugeDerivative}{\mathcal{D}}
+
 \endinput
