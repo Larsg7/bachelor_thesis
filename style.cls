@@ -8,6 +8,8 @@
 
 \usepackage{fancyhdr}
 \usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
 
 \usepackage{natbib}
 \bibliographystyle{plain}
@@ -17,5 +19,11 @@
 %
 \newcommand{\Lagr}{\mathcal{L}}
 \newcommand{\GaugeDerivative}{\mathcal{D}}
+\newcommand{\mref}[1]{(\ref{#1})}
+
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1 \delimsize\vert #2}
+
 
 \endinput

@@ -1,0 +1,58 @@
+	
+	% descibe distillation
+	The term distillation describes a quark-field smearing algorithm to compute hadron correlation functions. It was first described in 2009 by Michael Peardon \cite{distillation_paper}. Distillation promises efficient computations of all-to-all quark propagators.\\
+	
+\subsection{Distillation operator}
+	Smearing is used to apply a smoothing function to the field before applying the creation operators. Smearing should remove short-range modes while keeping as many symmetries as possible. Distillation makes use of a gauge-covariant quark smearing based on the lattice Laplacian which is defined as follows
+	\begin{equation}
+	    -\nabla^2_{xy} = 6\delta_{xy} - \sum^3_{j=1}(\tilde{U}_j(x,t)\delta_{x+j,y} + \tilde{U}^\dagger_j(x-y,t)\delta_{x-j,y})
+	\end{equation}
+	
+	Starting from the lattice Laplacian one can define a simple smearing operator
+	\begin{equation}
+	    J_{\omega,n}(t) = (1+\frac{\omega\nabla^2(t)}{n})^n
+	\end{equation}
+	
+	$\omega$ and $n$ are tunable parameters. For large $n$, $J$ defines the exponential of $\omega\nabla^2$ which suppresses higher eigenmodes of the laplacian hence only a few of the lowest modes contribute to $J$. % WHY?
+	\begin{equation}
+        \lim_{n\rightarrow\infty} J_{\omega,n}(t) = \exp(\omega\nabla^2) \equiv J_\omega
+	\end{equation}
+	
+    The lattice laplacian is a gauge-covariant, linear, negative-definite and hermitian operator acting on a $M$ dimensional Hilbert space. On each timeslice its eigenvectors are orthogonal and one can find an orthonormal basis of $\mathbb{C}^M$
+    \cite{bachelor_thesis_jan}
+    \begin{equation}\label{othonormal_eigenvectors}
+        \sum^M_{k=1}\ket{v_k}\bra{v_k} = 1
+    \end{equation}
+    where $v_k$ defines the $k^{th}$ eigenvector on the corresponding timeslice.
+    \begin{equation}
+        \nabla^2\ket{v_k} = \lambda_k\ket{v_k}
+    \end{equation}
+    The eigenvalues of the lattice laplacian are semi-negative $\lambda_k \in (-\infty,0]$ and $\lambda_{k+1} < \lambda_k$.\\
+    
+    Using the above we can now expand $J_\omega$ in the limit $n\rightarrow\infty$ using \mref{othonormal_eigenvectors}:
+    \begin{equation}
+        \begin{aligned}
+            J_\omega &= \sum^M_{k=1}\ket{v_k}\bra{v_k} J_\omega\\
+            &= \sum^M_{k=1}\ket{v_k}\bra{v_k} \exp(\omega\nabla^2)\\
+            &= \sum^M_{k=1}\ket{v_k}\bra{v_k} \exp(\omega\lambda_k)
+        \end{aligned}
+    \end{equation}
+    One can see that higher eigenmodes are suppressed exponentially. Therefore there is some number $N<<M$ such that $\exp(\omega\lambda_k) << 1$ holds. So we can write
+    \begin{equation}
+        J_\omega \approx \sum^N_{k=1}\ket{v_k}\bra{v_k} \exp(\omega\lambda_k)
+    \end{equation}
+    This motivates the definition of the distillation operator which is constructed by \cite{distillation_paper}:
+    \begin{equation}
+        \Box(t) \equiv V(t)V^\dagger(t)
+    \end{equation}
+    $V(t)$ is a $M \times N$ matrix which $k^{th}$ column contains the $k^{th}$ eigenvector of $\nabla^2$ evaluated on the $t^{th}$ timeslice, sorted by eigenvalue. $\Box(t)$ can also be written in terms of the eigenvectors
+    \begin{equation}
+        \Box_{xy}(t) = \sum^N_{k=1}\ket{v_{k,x}}\bra{v_{k,y}}
+    \end{equation}
+    $\Box$ projects into $V_N$, the subspace spanned by the $N$ lowest eigenmodes, hence $\Box^2 = \Box$. Quark fields can be smeared by applying the distillation operator onto them. They inherit all symmetry properties of the unsmeared fields.
+    \begin{equation}
+        \chi_f(t) \equiv \Box(t) \psi_f(t)
+    \end{equation}
+    
+    \subsection{Distilled meson tow-point correlation functions}
+    

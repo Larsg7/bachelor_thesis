@@ -1,0 +1,15 @@
+\subsection{QCD}
+	Quantum chromodynamics is a SU(3) gauge quantum field theory and describes quarks and gluons. The QCD lagrangian is defined as \cite{qcd1_script_philipsen}
+	\begin{equation}
+	    \Lagr_{QCD}(\psi,\bar{\psi},A_\mu) = \sum_f \bar{\psi}_f(x)(i\gamma_\mu\GaugeDerivative + m_f)\psi_f(x) + \frac{1}{4}F^a_{\mu\nu}F^a_{\mu\nu}
+	    \label{qcd_lagrangian}
+	\end{equation}
+	$\psi(x)$ represents the quark field, $\GaugeDerivative = \partial_\mu - igA_\mu(x) = \partial_\mu-igT^aA^a_\mu(x)$ is the gauge covariant derivative and $F_{\mu\nu} = T^aF^a_{\mu\nu}$ is the field strength tensor of the theory. The latter is defined as
+	\begin{equation}\label{strenth_tensor}
+	\begin{aligned}
+	    F_{\mu\nu} &= \partial_\mu A_\nu - \partial_\nu A_\mu-ig[A_\mu,A_\nu]\\
+	    &= T^a(\partial_\mu A^a_\nu - \partial_\nu A^a_\mu + g f^{abc}A^b_\mu A^c_\nu)
+	\end{aligned}
+	\end{equation}
+	
+	% more about symmetries

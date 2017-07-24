@@ -1,0 +1,31 @@
+\subsection{Lattice-QCD}
+	\subsection{Motivation}
+	When calculating the gluon propagator in one loop perturbation theory \cite{qcd2_script_philipsen}
+	\begin{equation}
+	    \langle 0|T(A^a_\mu(x)A^b_\nu)|0\rangle = \frac{\delta}{i\delta J^{a\mu}} \frac{\delta}{i\delta J^{b\nu}} Z[J]\Big|_{J=0}
+	\end{equation}
+	where $Z[J]$ is the generating functional and $J$ the source terms of the gluons, we find for the gluon propagator $D_{\mu\nu}$
+	\begin{equation}
+	    i D_{\mu\nu}(k) = i D_{F,\mu\nu} + i D_{F,\mu\alpha} i\Pi_{\alpha\beta} i D_{F,\beta\nu} + ...
+	\end{equation}
+	$D_{F,\mu\nu}$ is the feynman propagator and $\Pi_{\mu\nu}$ is the gluon self energy. The former is defined in feynman gauge as
+	\begin{equation}
+	    iD_{F,\mu\nu}(k) = -\frac{ig_{\mu\nu}}{k^2+i\epsilon}
+	\end{equation}
+	Working out the self energy to one loop level we find expressions proportional to
+	\begin{equation}
+	    \int\frac{d^4q}{(2\pi)^4}\frac{1}{q^2+i\epsilon}
+	\end{equation}
+	which diverge for $q\rightarrow\infty$. To calculate these expressions we have to regularize the integral. One regularization scheme is lattice-QCD.
+	
+	\subsection{lattice-QCD}
+	In lattice-QCD one defines a hypercubic, discrete spacetime lattice
+	\begin{equation}
+	    \Lambda = \{x|\frac{|x^\mu|}{a} \in \{0,L_\mu\}\}, \mu = 1,2,3,4
+	\end{equation}
+    where $a$ is the lattice spacing and $x^\mu$ is a vector along the $\mu$-axis of the lattice. The $L_\mu$'s define the size of the lattice. Usually the spacial dimensions are chosen to be equal, so that $L_1 = L_2 = L_3 = L$. A finite lattice breaks the translational invariace of the theory which would violate momentum conservation. To eliminate this issue periodic boundary conditions are used
+    \begin{equation}
+        \textbf{x} + L_\mu \hat{\boldsymbol{\mu}} = \textbf{x}
+    \end{equation}
+    where $\hat{\boldsymbol{\mu}}$ defines the unit vector along the $\mu$-axis.
+	% motivation: divergent integral -> regularisation

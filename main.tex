@@ -20,72 +20,34 @@
 	0 & 0 & 0 & 1 \\
 	\end{pmatrix}
 	$$\\
-	\cite{Rothe2012}
 	
-	\subsection{QCD}
-	Quantum chromodynamics is a SU(3) gauge Quantum field theory and describes quarks and gluons. The QCD lagrangian is defined as \cite{qcd1_script_philipsen}
-	\begin{equation}
-	    \Lagr_{QCD}(\psi,\bar{\psi},A_\mu) = \sum_f \bar{\psi}_f(x)(i\gamma_\mu\GaugeDerivative + m_f)\psi_f(x) + \frac{1}{4}F^a_{\mu\nu}F^a_{\mu\nu}
-	    \label{qcd_lagrangian}
-	\end{equation}
-	$\psi(x)$ represents the quark field, $\GaugeDerivative = \partial_\mu - igA_\mu(x) = \partial_\mu-igT^aA^a_\mu(x)$ is the gauge covariant derivative and $F_{\mu\nu} = T^aF^a_{\mu\nu}$ is the field strength tensor of the theory. The latter is defined as
-	\begin{equation}\label{strenth_tensor}
-	\begin{aligned}
-	    F_{\mu\nu} &= \partial_\mu A_\nu - \partial_\nu A_\mu-ig[A_\mu,A_\nu]\\
-	    &= T^a(\partial_\mu A^a_\nu - \partial_\nu A^a_\mu + g f^{abc}A^b_\mu A^c_\nu)
-	\end{aligned}
-	\end{equation}
+	\input{sections/qcd.tex}
 	
-	% more about symmetries
-	
-	\subsection{Lattice-QCD}
-	\subsection{Motivation}
-	When calculating the gluon propagator in one loop perturbation theory \cite{qcd2_script_philipsen}
-	\begin{equation}
-	    \langle 0|T(A^a_\mu(x)A^b_\nu)|0\rangle = \frac{\delta}{i\delta J^{a\mu}} \frac{\delta}{i\delta J^{b\nu}} Z[J]\Big|_{J=0}
-	\end{equation}
-	where $Z[J]$ is the generating functional and $J$ the source terms of the gluons, we find for the gluon propagator $D_{\mu\nu}$
-	\begin{equation}
-	    i D_{\mu\nu}(k) = i D_{F,\mu\nu} + i D_{F,\mu\alpha} i\Pi_{\alpha\beta} i D_{F,\beta\nu} + ...
-	\end{equation}
-	$D_{F,\mu\nu}$ is the feynman propagator and $\Pi_{\mu\nu}$ is the gluon self energy. The former is defined as
-	\begin{equation}
-	    iD_{F,\mu\nu}(k) = -
-	\end{equation}
-	
-	% motivation: divergent integral -> regularisation
+	\input{sections/lattice.tex}
 	
 	\subsection{Mesons}
 	
 	\newpage
 	
 	\section{Distillation}
-	% descibe distillation
-	The term distillation describes a quark-field smearing algorithm to compute hadron correlation functions. It was first described in 2009 by Michael Peardon \cite{distillation_paper}. Distillation promisises efficient computations of all-to-all quark propagators.\\
 	
-	Smearing is used to apply a smoothing function to the field before applying the creation operators. Smearing should remove short-range modes while keeping as many symmetries as possible. Distillation makes use of a gauge-covariant quark smearing based on the lattice Laplacian which is defined as follows
-	\begin{equation}
-	    -\nabla^2_{xy} = 6\delta_{xy} - \sum^3_{j=1}(\tilde{U}_j(x,t)\delta_{x+j,y} + \tilde{U}^\dagger_j(x-y,t)\delta_{x-j,y})
-	\end{equation}
-	
-	Starting form the lattice Laplacian one can define a simple smearing operator
-	\begin{equation}
-	    J_{\omega,n}(t) = (1+\frac{\omega\nabla^2(t)}{n})^n
-	\end{equation}
-	
-	$\omega$ and $n$ are tunable parameters. For large $n$, $J$ defines the exponential of $\omega\nabla^2$ which suppresses higher eigenmodes of the lapplacian hence only a few of the lowest modes contribute to J. % WHY?
-	\begin{equation}
-        \lim_{n\rightarrow\infty} J_{\omega,n}(t) = \exp(\omega\nabla^2)
-	\end{equation}
+	\input{sections/distillation.tex}
 	
 	% decribe the different calculations in program
 	
 	\section{Implementation}
 	
+	\input{sections/implementation.tex}
+	
 	\section{Results}
+	
+	\input{sections/results.tex}
 	
 	\section{Discussion}
 	
+	\input{sections/discussion.tex}
+	
+	\newpage
 	\bibliography{ref}
 	
 
