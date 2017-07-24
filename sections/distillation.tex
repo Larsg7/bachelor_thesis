@@ -1,9 +1,9 @@
 	
-	% descibe distillation
-	The term distillation describes a quark-field smearing algorithm to compute hadron correlation functions. It was first described in 2009 by Michael Peardon \cite{distillation_paper}. Distillation promises efficient computations of all-to-all quark propagators.\\
-	
+% descibe distillation
+The term distillation describes a quark-field smearing algorithm to compute hadron correlation functions. It was first described in 2009 by Michael Peardon \cite{distillation_paper}. Distillation promises efficient computations of all-to-all quark propagators.\\
+
 \subsection{Distillation operator}
-	Smearing is used to apply a smoothing function to the field before applying the creation operators. Smearing should remove short-range modes while keeping as many symmetries as possible. Distillation makes use of a gauge-covariant quark smearing based on the lattice Laplacian which is defined as follows
+    Smearing is used to apply a smoothing function to the field before applying the creation operators. Smearing should remove short-range modes while keeping as many symmetries as possible. Distillation makes use of a gauge-covariant quark smearing based on the lattice Laplacian which is defined as follows
 	\begin{equation}
 	    -\nabla^2_{xy} = 6\delta_{xy} - \sum^3_{j=1}(\tilde{U}_j(x,t)\delta_{x+j,y} + \tilde{U}^\dagger_j(x-y,t)\delta_{x-j,y})
 	\end{equation}
@@ -54,5 +54,41 @@
         \chi_f(t) \equiv \Box(t) \psi_f(t)
     \end{equation}
     
-    \subsection{Distilled meson tow-point correlation functions}
+\subsection{Distilled meson two-point correlation functions}
+    To calculate the energy eigenstate of the hamiltonian of a quantum field theory one can determine the correlation function between creation and annihilation operators at times $t$ and $t'$
+    \begin{equation}
+        C(t,t') = \langle \hat{a}(t) \hat{a}^\dagger(t')\rangle
+    \end{equation}
+    For an isovector meson we have the creation and annihilation operators $\bar{u}^a(t)\Gamma^Ad^a(t)$ and $-\bar{d}^b(t)\Gamma^Bu^b(t)$, where $\Gamma$ is a matrix in Dirac space, corresponding to total momentum $J$ and parity $P$.
+    Applying the distillation operator to $u$ and $d$ yields the following expression
+    \begin{equation}\label{distillation_correlation}
+        \begin{aligned}
+            C(t,t') &= -\langle \bar{u}^a(t)\Box(t)\Gamma^A\Box(t)d^a(t) * \bar{d}^b(t')\Box(t')\Gamma^B\Box(t')u^b(t') \rangle\\
+            &= -\frac{1}{Z}\int Dd Du DA \bar{u}_A^a(t)\Box_{AB}(t)\Gamma_{BC}^A\Box_{CD}(t)d_D^a(t)\\ &* \bar{d}_E^b(t')\Box_{EF}(t')\Gamma_{FG}^B\Box_{GH}(t')u_H^b(t') e^{S_{QCD}(d,u,A)}
+        \end{aligned}
+    \end{equation}
+    Interchanging $u^b(t')$ three times with the other fields, which are all grassmann-valued, yields an additional minus sign. Using
+    \begin{equation}
+        \frac{1}{Z}\int Du u_A^b(t')\bar{u}_B^a(t)e^{S??} = (D^{-1})_{AB}^{ba}(t',t)
+    \end{equation}
+    equation \mref{distillation_correlation} can be written as
+    \begin{equation}
+        \begin{aligned}
+            C(t,t') &= \frac{1}{Z}\int DA (D^{-1})_{HA}^{ba}(t',t) \Box_{AB}(t)\Gamma_{BC}^A\Box_{CD}(t) (D^{-1})_{DE}^{ab}(t,t') \Box_{EF}(t')\Gamma_{FG}^B\Box_{GH}(t') e^{S_{eff}(A)}\\
+            &= \langle Tr[(D^{-1})^{ba}(t',t) \Box(t)\Gamma^A\Box(t) (D^{-1})^{ab}(t,t') \Box(t')\Gamma^B\Box(t')] \rangle\\
+            &= \langle Tr[\Phi^B(t')\tau(t',t)\Phi^A(t)\tau(t,t')] \rangle
+        \end{aligned}
+    \end{equation}
+    In the last line the following definitions were used
+    \begin{equation}
+        \begin{aligned}
+            \Phi_{AB}^A(t) &\equiv V^\dagger(t)\Gamma_{AB}^A(t)V(t)\\
+            \tau_{AB}(t,t') &\equiv V^\dagger(t')(D^{-1})_{AB}(t,t')V(t)
+        \end{aligned}
+    \end{equation}
+    $\Phi^A(t)$ is called the distilled gamma matrix and $\tau(t,t')$ the propagator.
+    
+\subsection{Computation of the propagator}
+
+\subsection{Computation of the distilled gamma matrix}
     
