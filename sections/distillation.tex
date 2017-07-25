@@ -81,14 +81,42 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
     \end{equation}
     In the last line the following definitions were used
     \begin{equation}
-        \begin{aligned}
+        \begin{aligned}\label{def_gamma_and_perambulator}
             \Phi_{AB}^A(t) &\equiv V^\dagger(t)\Gamma_{AB}^A(t)V(t)\\
             \tau_{AB}(t,t') &\equiv V^\dagger(t')(D^{-1})_{AB}(t,t')V(t)
         \end{aligned}
     \end{equation}
-    $\Phi^A(t)$ is called the distilled gamma matrix and $\tau(t,t')$ the propagator.
+    $\Phi^A(t)$ is called the distilled gamma matrix and $\tau(t,t')$ the perambulator. The latter contains information about the quark propagator and can be independently computed from the former. In the following two chapters we will look at each one in detail.
     
-\subsection{Computation of the propagator}
-
+\subsection{Computation of the perambulator}
+    The propagator $(D^{-1(f)})^{ab}_{AB}(x;y)$ is defined by the following equation \cite{four_quark_correlation_functions}
+    \begin{equation}
+        \sum_{y}(D^{(f)})^{ab}_{AB}(x;y)(D^{-1(f)})^{bc}_{BC}(y;z) = \delta_{ac}\delta_{AC}\delta(x,z)
+    \end{equation}
+    To calculate the perambulator one computes single inversions $\psi(x)$ defined by the linear equation
+    \begin{equation}
+        \begin{aligned}\label{inversion_term}
+            &\sum_{x}(D^{(f)})^{ab}_{AB}(x;y)\psi^{(f)b}_{B}(y) = \xi^a_A(x)\\
+            &\psi^{(f)b}_{B}(y) = \sum_{x}(D^{-1(f)})^{ba}_{BA}(y,x)\xi^a_A(x)
+        \end{aligned}
+    \end{equation}
+    where $\xi(x)$ is the so called source term, also a fermionic field. Recall the definition of the perumbulator \mref{def_gamma_and_perambulator}, writing it explicitly will enable us to identify the inversion in the last equation \cite{bachelor_thesis_jan}
+    \begin{equation}\label{perambulator_explicit}
+        \begin{aligned}
+            &\tau_{AB}(t,t') \equiv V^\dagger(t')(D^{-1})_{AB}(t,t')V(t)\\
+            &= \sum_{k=1}^N \sum_{\textbf{x},\textbf{y}}
+            v_{k,t}^{\dagger a}(\textbf{x}) 
+            (D^{-1(f)})^{ab}_{AB}(\textbf{x},t;\textbf{y},t')
+            v_{k,t'}^{b}(\textbf{y})\\
+        \end{aligned}
+    \end{equation}
+    The inversion \mref{inversion_term} can now be identified
+    \begin{equation}
+        \psi^{(f)a}_{A;B,t',k}(\textbf{x},t) = (D^{-1(f)})^{ab}_{AB}(\textbf{x},t;\textbf{y},t')
+            v_{k,t'}^{b}(\textbf{y})
+    \end{equation}
+    the indices $B,t',k$ mean that $\psi^{(f)a}_{A;B,t',k}(\textbf{x},t)$ is defined on time slice $t'$ and spin index $B$ for the $k^{th}$ eigenvector.\\
+    To compute the complete perambulator one needs to compute $T \times 4 \times N$ inversions for all values of $B,t',k$ and then multiply these with the hermitian conjugate of the corresponding eigenvectors as shown in equation \mref{perambulator_explicit}. The source terms were computed using code written by \textit{Jan Kruse} \cite{bachelor_thesis_jan} and then submitted to the program \textit{tmLQCD} \cite{jansen_urbach_2009} which calculates the inversions.
+    
 \subsection{Computation of the distilled gamma matrix}
     
