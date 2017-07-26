@@ -1,0 +1,40 @@
+\subsection{Overview}
+    The computation of the correlation function on one gauge configurations can be broken down into the following steps
+    \begin{enumerate}
+        \item computation of $N$ eigenvectors
+        \item generation of $T \times 4 \times N$ sources
+        \item computation of as many inversions as there are sources
+        \item calculation of the perambulator and distilled gamma matrix
+        \item computation of the correlation function
+    \end{enumerate}
+    This work builds on the contraction code written by people of Marc Wagner's group, code by Jan Kruse and the aforementioned \verb+tmLQCD+ package. For documentation about steps 1 through 3 please see \cite{bachelor_thesis_jan}.
+
+\subsection{Lattice setup} % TODO: Move this to another section?
+    Gauge configurations in this work were obtained from the ensemble A40.24 which has been generated using $N_f = 2 + 1 + 1$ quark flavors. Details can be looked up in \cite{guage_configurations}.
+    
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{lllllll}
+        \hline
+        \multicolumn{1}{|c|}{$\#$ used configurations} & \multicolumn{1}{c|}{$\beta$} & \multicolumn{1}{c|}{$\kappa$} & \multicolumn{1}{c|}{$a\mu_I$} & \multicolumn{1}{c|}{$a\mu_\sigma$} & \multicolumn{1}{c|}{$a\mu_\delta$} & \multicolumn{1}{c|}{$(L/a)^3 \times T$} \\ \hline
+        \multicolumn{1}{|c|}{11} & \multicolumn{1}{c|}{3.9} & \multicolumn{1}{c|}{0.160856} & \multicolumn{1}{c|}{0.0040} & \multicolumn{1}{c|}{??} & \multicolumn{1}{c|}{??} & \multicolumn{1}{c|}{$24^3 \times 48$} \\ \hline
+                               &                       &                       &                       &                       &                       &                       \\
+                               &                       &                       &                       &                       &                       &                      
+        \end{tabular}
+        \caption{Parameters of gauge configurations used}
+        \label{table_gauge_params}
+    \end{table}
+    % TODO explanation
+
+\subsection{Modules}
+    The following modules written in C++11 were added to the existing contraction code in \verb+.../distillation/+. Every module consists of a \verb+main.cpp+ and a \verb+module.h+ and \verb+module.cpp+ file. The documentation of each function can be found in the corresponding .h file.  
+    \begin{itemize}
+        \item \verb+perambulator/+: Calculates the perambulator using the sources and inverted sources.
+        \item \verb+distilled_gamma/+: Computes the distilled gamma matrix given the calculated eigenvectors.
+        \item \verb+correlator_trace/+: Computes the correlator for a given perambulator and distilled gamma matrix.
+    \end{itemize}
+    
+    In addition to the above a \verb+MultiVector+ class has been written which can store a matrix of arbitrary dimension. Such a matrix can then be written to the disk. The definition of this class can be found in \verb+helper/multivector.hpp+. It is used to store the perambulator, distilled gamma matrix and correlator trace.
+    
+    \subsubsection{Computation of the perambulators}
+        
