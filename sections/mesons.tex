@@ -1,0 +1,42 @@
+\subsection{Meson correlation function}
+    Mesons are quark-antiqaurk states which can be characterized by the following QCD quantum numbers \cite{introduction_to_lattice_hadron_spectroscopy}:
+    \begin{itemize}
+        \item Spin and total angular momentum $J$, $J = 0, 1, 2,...$ (all mesons are bosons)
+        \item Parity $P = \pm1$
+        \item Charge conjugation $C = \pm1$
+        \item Flavour quantum numbers:
+            \begin{itemize}
+                \item $u$ and $d$: Isospin $I$; $I_z = \pm\frac{1}{2}$
+                \item $s$ and $\bar{s}$: Strangeness $S$; $S = \pm 1$
+                \item $c$ and $\bar{c}$: Charmness $C$; $C = \pm 1$
+                \item $b$ and $\bar{b}$: Bottomness $B'$; $B' = \pm 1$
+                \item $t$ and $\bar{t}$: Topness $T$; $T = \pm 1$
+            \end{itemize}
+        \item Electric charge is neglected here.
+    \end{itemize}
+    If one wants to examine a meson with a particular set of quantum numbers $I(J^P)$, $I$ denotes the total isospin, the correspoding creation operator $\Operator(n)$ needs to be defined. When acting on the vacuum $\Operator(n)$ creates a so called trial state $|\phi,n\rangle$ with the quantum numbers $I(J^P)$:
+    \begin{equation}
+        \Operator(n)|\Omega\rangle = |\phi,n\rangle
+    \end{equation}
+    Meson creation operators can be assembled in different ways, the easiest is
+    \begin{equation}\label{meson_creation_operator}
+        \begin{aligned}
+            \Operator(n) &= \bar{\psi}^{(f_1)}(n)\Gamma\psi^{(f_2)}(n)\\
+            \Operator^\dagger(n) &= \pm\bar{\psi}^{(f_2)}(n)\Gamma\psi^{(f_1)}(n)
+        \end{aligned}
+    \end{equation}
+    $\Gamma$ is a matrix in Dirac space which carries total momentum $J$ and parity $P$. The sign in \mref{meson_creation_operator} depends on the nature of $\Gamma$, because $\gamma_4\Gamma^\dagger\gamma_4 = \pm \Gamma$. The following table lists the possible configurations for $\Gamma$:
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|c|c|c|c|}
+        \hline
+        \multicolumn{1}{|c|}{$\Gamma$} & \multicolumn{1}{c|}{$J$} & \multicolumn{1}{c|}{$P$} & \multicolumn{1}{c|}{Transformation} \\ \hline
+         1,$\gamma_4$ & 0 & +1 &    scalar           \\
+         $\gamma_5, \gamma_4\gamma_5$                      &  0                     &  -1                     &  pseudoscalar                     \\
+         $\gamma_i,\gamma_4\gamma_i$                      & 1                      &    -1                   &  vector                     \\
+         $\gamma_4\gamma_i$                      & 1                      &  +1                     & axial vector                      \\
+          $\gamma_i\gamma_j$                     & 1                      & +1                      & tensor                     
+        \end{tabular}
+        \caption{My caption}
+        \label{my-label}
+    \end{table}

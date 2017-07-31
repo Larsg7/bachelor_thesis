@@ -19,6 +19,7 @@
 %
 \newcommand{\Lagr}{\mathcal{L}}
 \newcommand{\GaugeDerivative}{\mathcal{D}}
+\newcommand{\Operator}{\mathcal{O}}
 \newcommand{\mref}[1]{(\ref{#1})}
 
 \DeclarePairedDelimiter\bra{\langle}{\rvert}

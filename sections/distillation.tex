@@ -104,34 +104,35 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
     \begin{equation}\label{perambulator_explicit}
         \begin{aligned}
             &\tau^{(f)}_{AB}(t,t') \equiv V^\dagger_t(D^{-1})_{AB}(t,t')V_{t'}\\
-            &= \sum_{k=1}^N \sum_{x,y}
+            &= \sum_{k=1,k'=1}^N \sum_{x,y}
             v_{k,t}^{\dagger a}(\textbf{x}) 
             (D^{-1(f)})^{ab}_{AB}(\textbf{x},t;\textbf{y},t')
-            v_{k,t'}^{b}(\textbf{y})\\
-            &= \sum_{k=1}^N \sum_{\textbf{x},\textbf{y},x_0,y_0}
+            v_{k',t'}^{b}(\textbf{y})\\
+            &= \sum_{k=1,k'=1}^N \sum_{\textbf{x},\textbf{y},x_0,y_0}
             v_{k,t}^{\dagger a}(\textbf{x})\delta_{AA'}\delta_{tx_0}
             (D^{-1(f)})^{ab}_{A'B'}(\textbf{x},x_0;\textbf{y},y_0)
-            v_{k,t'}^{b}(\textbf{y})\delta_{BB'}\delta_{t'y_0}
+            v_{k',t'}^{b}(\textbf{y})\delta_{BB'}\delta_{t'y_0}
         \end{aligned}
     \end{equation}
     The inversion \mref{inversion_term} can now be identified
     \begin{equation}
-        \psi^{(f)a}_{A;B,t',k}(\textbf{x},x_0) = (D^{-1(f)})^{ab}_{A'B'}(\textbf{x},x_0;\textbf{y},y_0)
-            v_{k,t'}^{b}(\textbf{y})\delta_{BB'}\delta_{t'y_0}
+        \psi^{(f)a}_{A;B,t',k'}(\textbf{x},x_0) = (D^{-1(f)})^{ab}_{A'B'}(\textbf{x},x_0;\textbf{y},y_0)
+            v_{k',t'}^{b}(\textbf{y})\delta_{BB'}\delta_{t'y_0}
     \end{equation}
-    The indices $B,t',k$ mean that $\psi^{(f)a}_{A;B,t',k}(\textbf{x},t)$ is defined on time slice $t'$ and spin index $B$ for the $k^{th}$ eigenvector.\\
+    The indices $B,t',k'$ mean that $\psi^{(f)a}_{A;B,t',k}(\textbf{x},t)$ is defined on time slice $t'$ and spin index $B$ for the $k'^{th}$ eigenvector.\\
     
     The source terms $\xi(x)$ can also be identified:
     \begin{equation}
-        \xi^a_{B;B',t',k}(\textbf{y},y_0) =  v_{k,t'}^{b}(\textbf{y})\delta_{BB'}\delta_{t'y_0}
+        \xi^a_{B;B',t',k'}(\textbf{y},y_0) =  v_{k',t'}^{b}(\textbf{y})\delta_{BB'}\delta_{t'y_0}
     \end{equation}
     The source terms are fields of the needed size $L^3 \times 4 \times 3$ but have non-zero entries only at one specific spin index and timeslice.\\
     
     Finally, equation \mref{perambulator_explicit} becomes:
     \begin{equation}\label{perambulator_with_inversion}
-        \tau^{(f)}_{A'B'}(t,t') = \sum_{k=1}^N \sum_{\textbf{x},x_0} \xi^{\dagger a}_{A;A',t,k}(\textbf{x},x_0) \psi^{(f)a}_{A;B',t',k}(\textbf{x},x_0) 
+        \tau^{(f)}_{A'B'}(t,t') = \sum_{k=1,k'=1}^N \sum_{\textbf{x},x_0} \xi^{\dagger a}_{A;A',t,k}(\textbf{x},x_0) \psi^{(f)a}_{A;B',t',k'}(\textbf{x},x_0) 
     \end{equation}
     
-    To compute the complete perambulator one needs to compute $T \times 4 \times N$ inversions for all values of $B,t',k$ and then multiply these with the hermitian conjugate of the corresponding eigenvectors as shown in equation \mref{perambulator_explicit}. The eigenvectors were computed using code by ????, the source terms were calculated using code written by \textit{Jan Kruse} \cite{bachelor_thesis_jan} and then submitted to the program \verb+tmLQCD+ \cite{jansen_urbach_2009} which calculates the inversions. Details about the implementation can be found in section \ref{section:implementation}.
+    To compute the complete perambulator one needs to compute $T \times 4 \times N$ inversions for all values of $B,t',k$ and then multiply these with the hermitian conjugate of the sources as shown in equation \mref{perambulator_explicit}. The eigenvectors were computed using code by ????, the source terms were calculated using code written by \textit{Jan Kruse} \cite{bachelor_thesis_jan} and then submitted to the program \verb+tmLQCD+ \cite{jansen_urbach_2009} which calculates the inversions. Details about the implementation can be found in section \ref{section:implementation}.
     
 \subsection{Problems of distillation}
+    
