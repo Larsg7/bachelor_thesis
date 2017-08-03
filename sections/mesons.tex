@@ -14,29 +14,65 @@
             \end{itemize}
         \item Electric charge is neglected here.
     \end{itemize}
-    If one wants to examine a meson with a particular set of quantum numbers $I(J^P)$, $I$ denotes the total isospin, the correspoding creation operator $\Operator(n)$ needs to be defined. When acting on the vacuum $\Operator(n)$ creates a so called trial state $|\phi,n\rangle$ with the quantum numbers $I(J^P)$:
-    \begin{equation}
-        \Operator(n)|\Omega\rangle = |\phi,n\rangle
-    \end{equation}
-    Meson creation operators can be assembled in different ways, the easiest is
-    \begin{equation}\label{meson_creation_operator}
-        \begin{aligned}
-            \Operator(n) &= \bar{\psi}^{(f_1)}(n)\Gamma\psi^{(f_2)}(n)\\
-            \Operator^\dagger(n) &= \pm\bar{\psi}^{(f_2)}(n)\Gamma\psi^{(f_1)}(n)
-        \end{aligned}
-    \end{equation}
-    $\Gamma$ is a matrix in Dirac space which carries total momentum $J$ and parity $P$. The sign in \mref{meson_creation_operator} depends on the nature of $\Gamma$, because $\gamma_4\Gamma^\dagger\gamma_4 = \pm \Gamma$. The following table lists the possible configurations for $\Gamma$:
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{|c|c|c|c|}
-        \hline
-        \multicolumn{1}{|c|}{$\Gamma$} & \multicolumn{1}{c|}{$J$} & \multicolumn{1}{c|}{$P$} & \multicolumn{1}{c|}{Transformation} \\ \hline
-         1,$\gamma_4$ & 0 & +1 &    scalar           \\
-         $\gamma_5, \gamma_4\gamma_5$                      &  0                     &  -1                     &  pseudoscalar                     \\
-         $\gamma_i,\gamma_4\gamma_i$                      & 1                      &    -1                   &  vector                     \\
-         $\gamma_4\gamma_i$                      & 1                      &  +1                     & axial vector                      \\
-          $\gamma_i\gamma_j$                     & 1                      & +1                      & tensor                     
-        \end{tabular}
-        \caption{My caption}
-        \label{my-label}
-    \end{table}
+    
+    \subsubsection{Creation operators}
+        If one wants to examine a meson with a particular set of quantum numbers $I(J^P)$, $I$ denotes the total isospin, the correspoding creation operator $\Operator(n)$ needs to be defined. When acting on the vacuum $\Operator(n)$ creates a so called trial state $|\phi,n\rangle$ with the quantum numbers $I(J^P)$:
+        \begin{equation}
+            \Operator(n)|\Omega\rangle = |\phi,n\rangle
+        \end{equation}
+        Meson creation operators can be assembled in different ways, the easiest is
+        \begin{equation}\label{meson_creation_operator}
+            \begin{aligned}
+                \Operator(n) &= \bar{\psi}^{(f_1)}(n)\Gamma\psi^{(f_2)}(n)\\
+                \Operator^\dagger(n) &= \pm\bar{\psi}^{(f_2)}(n)\Gamma\psi^{(f_1)}(n)
+            \end{aligned}
+        \end{equation}
+        $\Gamma$ is a matrix in Dirac space which carries total momentum $J$ and parity $P$. The sign in \mref{meson_creation_operator} depends on the nature of $\Gamma$, because $\gamma_4\Gamma^\dagger\gamma_4 = \pm \Gamma$. The following table lists the possible configurations for $\Gamma$:
+        \begin{table}[h]
+            \centering
+            \begin{tabular}{|c|c|c|c|}
+            \hline
+            \multicolumn{1}{|c|}{$\Gamma$} & \multicolumn{1}{c|}{$J$} & \multicolumn{1}{c|}{$P$} & \multicolumn{1}{c|}{Transformation} \\ \hline
+             1,$\gamma_4$ & 0 & +1 &    scalar           \\
+             $\gamma_5, \gamma_4\gamma_5$                      &  0                     &  -1                     &  pseudoscalar                     \\
+             $\gamma_i,\gamma_4\gamma_i$                      & 1                      &    -1                   &  vector                     \\
+             $\gamma_4\gamma_i$                      & 1                      &  +1                     & axial vector                      \\
+              $\gamma_i\gamma_j$                     & 1                      & +1                      & tensor                     
+            \end{tabular}
+            \caption{Possible options for $\Gamma$}
+            \label{my-label}
+        \end{table}
+    \subsubsection{Meson correlation functions}
+        To determine the energy of an eigenstate of the hamiltonian of a quantum field theory one can calculate the vacuum expectation value (VEV) of the respective creation operator. Also called the correlator, the VEV is defined by the Feynman path integral:
+        \begin{equation}\label{VEV}
+            \begin{aligned}
+                C(t_2 - t_1) &\equiv \langle\Omega|\Operator^\dagger(t_2)\Operator(t_1)|\Omega\rangle \\
+                &= \frac{1}{Z}\int D[\psi]D[\bar{\psi}]D[A]\ \Operator^\dagger(t_2)\Operator(t_1)e^{-S[\psi, \bar{\psi}, A]}
+            \end{aligned}
+        \end{equation}
+        where $Z$ defines the partition function:
+        \begin{equation}\label{partition_function}
+            Z = \int D[\psi]D[\bar{\psi}]D[A]\ e^{-S[\psi, \bar{\psi}, A]}
+        \end{equation}
+        $S[\psi, \bar{\psi}, A]$ is the lattice action. Introducing a finite lattice spacing difficulties calculating the path integral are solved. The integral becomes regularized and the infinite dimensional integral can be replaced by a finite product of finite dimensional integrals:
+        \begin{equation}
+            \int D[\psi]D[\bar{\psi}]D[A]\ \approx \prod_{x \in \Lambda}\int d\psi(x)d\bar{\psi(x)}dA(x)
+        \end{equation}
+        To achieve the goal of this work, calculating the mesinic energy spectrum, one introduces a complete set of energy eigenstates $\sum_k |k\rangle\langle k| = 1$ into equation \mref{VEV}:
+        \begin{equation}\label{correlation_with_eigenstates}
+            C(t_2 - t_1) = \sum_k \langle\Omega|\Operator^\dagger(t_2) |k\rangle\langle k| \Operator(t_1)|\Omega\rangle
+        \end{equation}
+        We can now exploit that $\Operator^\dagger(t_2)$ is a Heisenberg operator and its temporal evolution can be described by
+        \begin{equation}
+            \Operator^\dagger(t_2) = e^{H(t_2 - t_1)}\Operator^\dagger(t_1)e^{-H(t_2 - t_1)}
+        \end{equation}
+        So we can write \mref{correlation_with_eigenstates} as
+        \begin{equation}
+            \begin{aligned}
+                C(t_2 - t_1) &= \sum_k \langle\Omega|e^{H(t_2 - t_1)}\Operator^\dagger(t_1)e^{-H(t_2 - t_1)} |k\rangle\langle k| \Operator(t_1)|\Omega\rangle\\
+                &= \sum_k \langle\Omega|e^{E_\Omega(t_2 - t_1)}\Operator^\dagger(t_1)e^{-E_k(t_2 - t_1)} |k\rangle\langle k| \Operator(t_1)|\Omega\rangle\\
+                &= \sum_k (\langle k|\Operator(t_1) |\Omega\rangle)^\dagger\langle k| \Operator(t_1)|\Omega\rangle e^{(E_\Omega - E_k)(t_2 - t_1)}\\
+                &= \sum_k |\langle k|\Operator(t_1) |\Omega\rangle)|^2 e^{E(t_2 - t_1)}\\
+            \end{aligned}
+        \end{equation}
+        where $E = E_\Omega - E_k$ is the energy of the energystate $|k\rangle$ relative to the vacuum energy.
