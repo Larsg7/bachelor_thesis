@@ -84,14 +84,14 @@
             \begin{aligned}
                 C(t_2 - t_1) &= \langle\Omega|\Operator^\dagger(t_2)\Operator(t_1)|\Omega\rangle\\
                 &= \pm \sum_{\textbf{x},\textbf{y}\in\Lambda}
-                \langle\Omega|\bar{\psi}^{(f_1)}(\textbf{x},x_0)\Gamma\psi^{(f_2)}(\textbf{x},x_0)
-                \bar{\psi}^{(f_2)}(\textbf{y},y_0)\Gamma\psi^{(f_1)}(\textbf{y},y_0)|\Omega\rangle\\
+                \langle\Omega|\bar{\psi}^{(f_1)}(\textbf{x},t_2)\Gamma\psi^{(f_2)}(\textbf{x},t_2)
+                \bar{\psi}^{(f_2)}(\textbf{y},t_2)\Gamma\psi^{(f_1)}(\textbf{y},t_2)|\Omega\rangle\\
                 &= \pm \sum_{\textbf{x},\textbf{y}\in\Lambda}
-                \langle\Omega|\bar{\psi}_A^{(f_1),a}(\textbf{x},x_0)\Gamma_{AB}\psi_B^{(f_2),a}(\textbf{x},x_0)
-                \bar{\psi}^{(f_2),b}_C(\textbf{y},y_0)\Gamma_{CD}\psi_D^{(f_1),b}(\textbf{y},y_0)|\Omega\rangle\\
+                \langle\Omega|\bar{\psi}_A^{(f_1),a}(\textbf{x},t_2)\Gamma_{AB}\psi_B^{(f_2),a}(\textbf{x},t_2)
+                \bar{\psi}^{(f_2),b}_C(\textbf{y},t_2)\Gamma_{CD}\psi_D^{(f_1),b}(\textbf{y},t_2)|\Omega\rangle\\
                 &= \mp \sum_{\textbf{x},\textbf{y}\in\Lambda}\Gamma_{AB}\Gamma_{CD}
-                \langle\Omega|\psi_D^{(f_1),b}(\textbf{y},y_0)\bar{\psi}_A^{(f_1),a}(\textbf{x},x_0)
-                \psi_B^{(f_2),a}(\textbf{x},x_0)\bar{\psi}^{(f_2),b}_C(\textbf{y},y_0)|\Omega\rangle
+                \langle\Omega|\psi_D^{(f_1),b}(\textbf{y},t_2)\bar{\psi}_A^{(f_1),a}(\textbf{x},t_2)
+                \psi_B^{(f_2),a}(\textbf{x},t_2)\bar{\psi}^{(f_2),b}_C(\textbf{y},t_2)|\Omega\rangle
             \end{aligned}
         \end{equation}
         The $\pm$ sign is introduced from the hermition adjoint \mref{meson_creation_operator} of the meson creation operator. In the last line we have an additional minus sign because we interchanged grassmann valued fields three times.\\
@@ -99,23 +99,25 @@
         Integration the fermion fields can be done independently for each flavor and defines the free Propagator $(D^{(f)})^{-1}(x,y)$ \cite{qcd2_script_wagner}:
         \begin{equation}
             \begin{aligned}
-                \langle\Omega|\psi^{(f),a}_A(\textbf{x}, x_0)\bar{\psi}^{(f),b}_B(\textbf{y}, y_0)|\Omega\rangle_F &= 
+                \langle\Omega|\psi^{(f),a}_A(\textbf{x}, t_2)\bar{\psi}^{(f),b}_B(\textbf{y}, t_2)|\Omega\rangle_F &= 
                 (\frac{\delta}{\delta\bar{\eta}^a_A(x)})(-\frac{\delta}{\delta{\eta}^b_B(y)})Z_F[\eta,\bar{\eta}]\Big |_{\eta,\bar{\eta}=0}\\
                 &= (D^{(f)})_{AB}^{-1,ab}(x,y)
             \end{aligned}
         \end{equation}
-        where $\langle...\rangle_F$ describes the fermionic expectation value. Therefore only the path integral over the gauge field remains and equation \mref{correlation_in_t} becomes:
+        where $\langle...\rangle_F$ describes the fermionic expectation value. Therefore only the path integral over the gauge fields $\langle...\rangle_A$ remains and equation \mref{correlation_in_t} becomes:
         \begin{equation}\label{correlator_final}
             \begin{aligned}
                 C(t_2 - t_1) &= \mp \sum_{\textbf{x},\textbf{y}\in\Lambda}\Gamma_{AB}\Gamma_{CD}
-                \langle\Omega|(D^{(f)})_{DA}^{-1,ba}(\textbf{y},y_0,\textbf{x},x_0)
-                (D^{(f)})_{BC}^{-1,ab}(\textbf{x},x_0,\textbf{y},y_0)|\Omega\rangle_A\\
+                \langle\Omega|(D^{(f)})_{DA}^{-1,ba}(\textbf{y},t_2,\textbf{x},t_2)
+                (D^{(f)})_{BC}^{-1,ab}(\textbf{x},t_2,\textbf{y},t_2)|\Omega\rangle_A\\
                 &= \mp \sum_{\textbf{x},\textbf{y}\in\Lambda}
-                \langle\Omega|(D^{(f)})_{DA}^{-1,ba}(\textbf{y},y_0,\textbf{x},x_0)\Gamma_{AB}
-                (D^{(f)})_{BC}^{-1,ab}(\textbf{x},x_0,\textbf{y},y_0)\Gamma_{CD}|\Omega\rangle_A\\
+                \langle\Omega|(D^{(f)})_{DA}^{-1,ba}(\textbf{y},t_2,\textbf{x},t_2)\Gamma_{AB}
+                (D^{(f)})_{BC}^{-1,ab}(\textbf{x},t_2,\textbf{y},t_2)\Gamma_{CD}|\Omega\rangle_A\\
                 &= \mp \sum_{\textbf{x},\textbf{y}\in\Lambda}
-                \langle\Omega|Tr[(D^{(f)})^{-1}(\textbf{y},y_0,\textbf{x},x_0)\Gamma
-                (D^{(f)})^{-1}(\textbf{x},x_0,\textbf{y},y_0)\Gamma]|\Omega\rangle_A\\
+                \langle\Omega|Tr[(D^{(f)})^{-1}(\textbf{y},t_2,\textbf{x},t_2)\Gamma
+                (D^{(f)})^{-1}(\textbf{x},t_2,\textbf{y},t_2)\Gamma]|\Omega\rangle_A\\
             \end{aligned}
         \end{equation}
-        The trace $T[]$ acts in Dirac and in color space.
+        The trace $Tr[...]$ acts in Dirac and in color space.\\
+        
+        On a finite lattice the path integral in equation \mref{correlator_final} is of finite dimension and can be done numerically. It is usually calculated by averaging over gauge field configurations which can be obtained using Monte Carlo methods.

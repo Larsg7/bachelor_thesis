@@ -43,40 +43,33 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
     \end{equation}
     This motivates the definition of the distillation operator which is constructed by \cite{distillation_paper}:
     \begin{equation}
-        \Box(t) \equiv V(t)V^\dagger(t)
+        \Box_t \equiv V_tV_t^\dagger
     \end{equation}
-    $V(t)$ is a $M \times N$ matrix which $k^{th}$ column contains the $k^{th}$ eigenvector of $\nabla^2$ evaluated on the $t^{th}$ timeslice, sorted by eigenvalue. $\Box(t)$ can also be written in terms of the eigenvectors
+    $V_t$ is a $M \times N$ matrix which $k^{th}$ column contains the $k^{th}$ eigenvector of $\nabla^2$ evaluated on the $t^{th}$ timeslice, sorted by eigenvalue. $\Box_t$ can also be written in terms of the eigenvectors
     \begin{equation}
-        \Box_{xy}(t) = \sum^N_{k=1}\ket{v_{k,x}}\bra{v_{k,y}}
+        \Box_{t}(\textbf{x},\textbf{y}) = \sum^N_{k=1}v_{k,t}(\textbf{x})v_{k,t}(\textbf{y})
     \end{equation}
     $\Box$ projects into $V_N$, the subspace spanned by the $N$ lowest eigenmodes, hence $\Box^2 = \Box$. Quark fields can be smeared by applying the distillation operator onto them. They inherit all symmetry properties of the unsmeared fields.
     \begin{equation}
-        \chi_f(t) \equiv \Box(t) \psi_f(t)
+        \chi^{(f)}(\textbf{x},t) \equiv \sum_{\textbf{y}} \Box_t(\textbf{x},\textbf{y}) \psi^{(f)}(\textbf{y},t)
     \end{equation}
     
 \subsection{Distilled meson two-point correlation functions}
-    To calculate the energy eigenstate of the hamiltonian of a quantum field theory one can determine the correlation function between creation and annihilation operators at times $t$ and $t'$
+    Meson two-point correlation functions of disilled fields can be constructed similar to \mref{VEV}:
     \begin{equation}
-        C(t,t') = \langle \hat{a}(t) \hat{a}^\dagger(t')\rangle
-    \end{equation}
-    For an isovector meson we have the creation and annihilation operators $\bar{u}^a(t)\Gamma^Ad^a(t)$ and $-\bar{d}^b(t)\Gamma^Bu^b(t)$, where $\Gamma$ is a matrix in Dirac space, corresponding to total momentum $J$ and parity $P$.
-    Applying the distillation operator to $u$ and $d$ yields the following expression
-    \begin{equation}\label{distillation_correlation}
         \begin{aligned}
-            C(t,t') &= -\langle \bar{u}^a(t)\Box(t)\Gamma^A\Box(t)d^a(t) * \bar{d}^b(t')\Box(t')\Gamma^B\Box(t')u^b(t') \rangle\\
-            &= -\frac{1}{Z}\int Dd Du DA \bar{u}_A^a(t)\Box_{AB}(t)\Gamma_{BC}^A\Box_{CD}(t)d_D^a(t)\\ &* \bar{d}_E^b(t')\Box_{EF}(t')\Gamma_{FG}^B\Box_{GH}(t')u_H^b(t') e^{S_{QCD}(d,u,A)}
+            C(t_2 - t_1) &= \langle\Omega| \Operator^\dagger(t_2) \Operator(t_1)|\Omega\rangle\\
+            = \pm\langle&\Omega| \bar{\psi}^{(f_1)}(\textbf{x}_1,t_2)\Box_{t_2}(\textbf{x}_1,\textbf{y}_1)\Gamma^A
+            \Box_{t_2}(\textbf{y}_1,\textbf{x}_2)\psi^{(f_1)}(\textbf{x}_2,t_2)\\
+            &\times \bar{\psi}^{(f_2)}(\textbf{x}_3,t_1)\Box_{t_1}(\textbf{x}_3,\textbf{y}_2)\Gamma^B
+            \Box_{t_1}(\textbf{y}_2,\textbf{x}_4)\psi^{(f_2)}(\textbf{x}_4,t_1) |\Omega\rangle
         \end{aligned}
     \end{equation}
-    Interchanging $u^b(t')$ three times with the other fields, which are all grassmann-valued, yields an additional minus sign. Using
-    \begin{equation}
-        \frac{1}{Z}\int Du u_A^b(t')\bar{u}_B^a(t)e^{S??} = (D^{-1})_{AB}^{ba}(t',t)
-    \end{equation}
-    equation \mref{distillation_correlation} can be written as
+
+    Executing the same steps as in \mref{correlator_final} yields
     \begin{equation}
         \begin{aligned}
-            C(t,t') &= \frac{1}{Z}\int DA (D^{-1})_{HA}^{ba}(t',t) \Box_{AB}(t)\Gamma_{BC}^A\Box_{CD}(t) (D^{-1})_{DE}^{ab}(t,t') \Box_{EF}(t')\Gamma_{FG}^B\Box_{GH}(t') e^{S_{eff}(A)}\\
-            &= \langle Tr[(D^{-1})^{ba}(t',t) \Box(t)\Gamma^A\Box(t) (D^{-1})^{ab}(t,t') \Box(t')\Gamma^B\Box(t')] \rangle\\
-            &= \langle Tr[\Phi^B(t')\tau(t',t)\Phi^A(t)\tau(t,t')] \rangle
+            C(t,t') &= \langle Tr[\Phi^B(t')\tau(t',t)\Phi^A(t)\tau(t,t')] \rangle
         \end{aligned}
     \end{equation}
     In the last line the following definitions were used
