@@ -25,5 +25,53 @@
     \begin{equation}
         \textbf{x} + L_\mu \hat{\boldsymbol{\mu}} = \textbf{x}
     \end{equation}
-    where $\hat{\boldsymbol{\mu}}$ defines the unit vector along the $\mu$-axis.
-	% motivation: divergent integral -> regularisation
+    where $\hat{\boldsymbol{\mu}}$ defines the unit vector along the $\mu$-axis.\\
+	
+	In lattice-QCD the action has to be redefined replacing $A_\mu$ by so called link variables $U_\mu$ which preserve all symmetries of the action.
+	\begin{equation}
+	    S_{QCD}[\psi,\bar{\psi},A] \rightarrow S_{Lattice-QCD}[\psi,\bar{\psi},U]
+	\end{equation}
+	These link variables are elements of SU(3) algebra and are defined as
+	\begin{equation}
+	    U_\mu(x) = e^{-igA_\mu(x)}
+	\end{equation}
+	A closed loop of link variables is gauge invariant and the simplest one is called plaquette $U_{\mu\nu}$ \cite{Rothe2012}. A plaquette in the $\mu - \nu$ plane is defined by
+	\begin{equation}
+	    U_{\mu\nu}(x) = U_\mu(x)U_\nu(x+\hat{\mu})U_\nu^\dagger(x+\hat{\nu})U_\nu^\dagger(x)
+	\end{equation}
+	where the link variables are path ordered. The simplest formulation of the lattice action in U(1) symmetry can be derived from this plaquette \cite{introduction_to_lattice_qcd}
+	\begin{equation}
+	    S_g[U] = \frac{6}{g^2}\sum_x\sum_{\mu<\nu}ReTr\frac{1}{3}(1-U_{\mu\nu})
+	\end{equation}
+	For fermions we find as the simplest (called \textit{naive}) action
+	\begin{equation}\label{naive_lattice_action}
+	    \begin{aligned}
+	        S[\psi,\bar{\psi},U] =\ &m_q\sum_x\bar{\psi}(x)\psi(x)\\
+	        &+ \frac{1}{2a}\sum_x\bar{\psi}(x)\gamma_\mu[U_\mu(x)\psi(x+\hat{\mu})-U_\mu^\dagger(x-\hat{\mu})\psi(x-\hat{\mu})]\\
+	        &\equiv \sum_x\bar{\psi}(x)M_{xy}[U]\psi(x)
+	    \end{aligned}
+	\end{equation}
+	Here $M_{xy}[U]$ is the lattice Dirac operator.
+	\begin{equation}\label{naive_lattice_operator}
+	    M_{ij}[U] = m_q\delta_{ij} + \frac{1}{2a}\sum_\mu\gamma_\mu(U_{i,\mu}\delta_{i,j-\mu} - U_{i-\mu,\mu}\delta_{i,j+\mu})
+	\end{equation}
+	% TODO extend this paragraph
+	For $m_q = 0$ the naive action \mref{naive_lattice_action} has both vector and axial symmetry, preserves chiral symmetry but introduces so called \textit{fermion doubling} \cite{introduction_to_lattice_qcd}. To prevent fermion doubling which is a pure lattice artifact one approach introduces additional mass terms, so called \textit{Wilson fermions}.
+	
+	\subsection{Wison twisted mass QCD}
+	
+	In twisted mass QCD a mass term is added to the action \mref{naive_lattice_action}. For a field $\chi$ this term reads \cite{twisted_mass_qcd}
+	\begin{equation}
+	    i\mu_q\bar{\chi}\gamma_5\tau_3\chi
+	\end{equation}
+	$\tau_3$ is the Pauli matrix in flavor space and $\mu_q$ is the twisted mass. In a \textit{twisted basis} $\{\chi,\bar{\chi}\}$ the tmQCD action is
+	\begin{equation}
+	    S_F[\chi,\bar{\chi},A] = \int d^4x\bar{\chi}(\gamma_\mu \GaugeDerivative_\mu + m_q + i\mu_q \gamma_5\tau_3)\chi
+	\end{equation}
+	The mass term can be written as $m_q + i\mu_q\gamma_5\tau_3 = Me^{i\alpha\gamma_5\tau_3}$. The \textit{twisted basis} is a mere coordination transformaion of the \textit{physical basic} $\{\psi,\bar{\psi}\}$
+	\begin{equation}
+	    \psi = e^{i\omega\gamma_5\tau_3/2}\chi,\ \bar{\psi} = \bar{\chi}e^{i\omega\gamma_5\tau_3/2}
+	\end{equation}
+	where $\omega$ is called the \textit{twisted angle}. For $\alpha = \omega$ we obtain the standard QCD action. Using tmQCD fixes the extra degrees of freedom introduced by the naive action. It has its own problems, though: The $\tau_3$ matrix switches the signes for up- and down-type quarks which breaks isospin conservation. The $\gamma_5$ matrix on the other hand implies that parity is no longer a symmetry.
+	
+	% Wilson twisted mass
