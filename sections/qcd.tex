@@ -3,7 +3,7 @@ Throughout this work natural units will be used, so that $\hbar = c = a = 1$, wh
 \subsection{QCD}
 	Quantum chromodynamics is a SU(3) gauge quantum field theory and describes quarks and gluons. The QCD lagrangian is defined as \cite{qcd1_script_philipsen}
 	\begin{equation}
-	    \Lagr_{QCD}(\psi,\bar{\psi},A_\mu) = \sum_f \bar{\psi}_f(x)(i\gamma_\mu\GaugeDerivative_\mu + m_f)\psi_f(x) + \frac{1}{4}F^a_{\mu\nu}F^a_{\mu\nu}
+	    \Lagr_{QCD}[\psi,\bar{\psi}, A] = \sum_f \bar{\psi}_f(x)(i\gamma_\mu\GaugeDerivative_\mu + m_f)\psi_f(x) + \frac{1}{4}F^a_{\mu\nu}F^a_{\mu\nu}
 	    \label{qcd_lagrangian}
 	\end{equation}
 	$\psi(x)$ represents the quark field, $\GaugeDerivative_\mu = \partial_\mu - igA_\mu(x) = \partial_\mu-igT^aA^a_\mu(x)$ is the gauge covariant derivative and $F_{\mu\nu} = T^aF^a_{\mu\nu}$ is the field strength tensor of the theory. The latter is defined as
@@ -14,4 +14,10 @@ Throughout this work natural units will be used, so that $\hbar = c = a = 1$, wh
 	\end{aligned}
 	\end{equation}
 	
-	% more about symmetries
+	The $T^a$'s are called $SU(3)$ generators and are part of the $SU(3)$ Lie algebra with the commutator relationship $[T^a,T^b]=if^{abc}T^c$. The action is given by
+	\begin{equation}
+	    S_{QCD}[\psi,\bar{\psi}, A] = \int d^4x \Lagr_{QCD}[\psi,\bar{\psi}, A]
+	\end{equation}
+	and is invariant under local $SU(3)$ transformations. The first term of the lagrangian and hence the action displays information about the fermionic dynamic of the theory. The second term about the self interaction of the gluons.\\
+	
+	The internal degrees of freedom of the quark fields $\psi$ and $\bar{\psi}=\psi^\dagger\gamma_4$ separate into three parts: Spin ($A$), color ($c$) and flavor ($f$) with 4, 3, and $N_f$ components respectively. The gluon fields have eight color degrees of freedom and transform under the adjoint representation of $SU(3)$.

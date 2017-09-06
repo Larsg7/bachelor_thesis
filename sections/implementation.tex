@@ -9,22 +9,7 @@
     \end{enumerate}
     This work builds on the contraction code written by people of Marc Wagner's group, code by Jan Kruse and the aforementioned \verb+tmLQCD+ package. For documentation about steps 1 through 3 please see \cite{bachelor_thesis_jan}.
 
-\subsection{Lattice setup} % TODO: Move this to another section?
-    Gauge configurations in this work were obtained from the ensemble A40.24 which has been generated using $N_f = 2 + 1 + 1$ quark flavors. Details can be looked up in \cite{guage_configurations}.
-    
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{lllllll}
-        \hline
-        \multicolumn{1}{|c|}{$\#$ used configurations} & \multicolumn{1}{c|}{$\beta$} & \multicolumn{1}{c|}{$\kappa$} & \multicolumn{1}{c|}{$a\mu_I$} & \multicolumn{1}{c|}{$a\mu_\sigma$} & \multicolumn{1}{c|}{$a\mu_\delta$} & \multicolumn{1}{c|}{$(L/a)^3 \times T$} \\ \hline
-        \multicolumn{1}{|c|}{11} & \multicolumn{1}{c|}{3.9} & \multicolumn{1}{c|}{0.160856} & \multicolumn{1}{c|}{0.0040} & \multicolumn{1}{c|}{??} & \multicolumn{1}{c|}{??} & \multicolumn{1}{c|}{$24^3 \times 48$} \\ \hline
-                               &                       &                       &                       &                       &                       &                       \\
-                               &                       &                       &                       &                       &                       &                      
-        \end{tabular}
-        \caption{Parameters of gauge configurations used}
-        \label{table_gauge_params}
-    \end{table}
-    % TODO explanation
+
 
 \subsection{Modules}
     The following modules written in C++11 were added to the existing contraction code in \verb+.../distillation/+. Every module consists of a \verb+main.cpp+ and a \verb+module.h+ and \verb+module.cpp+ file. The documentation of each function can be found in the corresponding .h file.  
@@ -67,7 +52,7 @@ gamma.CONF-ID.num_vec##.time##\end{verbatim}
         To calculate the correlation function call
         \begin{verbatim}
 ./trace path-to-gamma-matrix path-to-perambulator conf_id 
-path-to-target-dir num_vec T\end{verbatim}
+        path-to-target-dir num_vec T\end{verbatim}
         Here \verb+path-to-gamma-matrix+ and \verb+path-to-perambulator+ are the paths to the files holding the distilled gamma matrix and perambulator calculated earlier. The correlator will be saved in the format
         \begin{verbatim}
 trace.CONF-ID.num_vec##.time##\end{verbatim}
