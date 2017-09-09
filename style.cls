@@ -1,5 +1,6 @@
 \ProvidesClass{style}
 \LoadClass[a4paper,11pt,titlepage]{scrartcl}
+\usepackage[margin=2.5cm]{geometry}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -10,6 +11,8 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{float}
 
 \usepackage{natbib}
 \bibliographystyle{plain}
