@@ -73,10 +73,10 @@
                 C(t_2 - t_1) &= \sum_k \langle\Omega|e^{H(t_2 - t_1)}\Operator^\dagger(t_1)e^{-H(t_2 - t_1)} |k\rangle\langle k| \Operator(t_1)|\Omega\rangle\\
                 &= \sum_k \langle\Omega|e^{E_\Omega(t_2 - t_1)}\Operator^\dagger(t_1)e^{-E_k(t_2 - t_1)} |k\rangle\langle k| \Operator(t_1)|\Omega\rangle\\
                 &= \sum_k (\langle k|\Operator(t_1) |\Omega\rangle)^\dagger\langle k| \Operator(t_1)|\Omega\rangle e^{(E_\Omega - E_k)(t_2 - t_1)}\\
-                &= \sum_k |\langle k|\Operator(t_1) |\Omega\rangle)|^2 e^{E(t_2 - t_1)}\\
+                &= \sum_k |\langle k|\Operator(t_1) |\Omega\rangle)|^2 e^{-E(t_2 - t_1)}\\
             \end{aligned}
         \end{equation}
-        where $E = E_\Omega - E_k$ is the energy of the energystate $|k\rangle$ relative to the vacuum energy.\\
+        where $E = E_k - E_\Omega$ is the energy of the energystate $|k\rangle$ relative to the vacuum energy.\\
         % TODO more about how to extract mass from energy
         
         One can, after calculating the path integral numerically, extract the meson mass by fitting an exponential curve to the correlation function.
