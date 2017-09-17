@@ -46,13 +46,25 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
         \Box_t \equiv V_tV_t^\dagger
     \end{equation}
     $V_t$ is a $M \times N$ matrix which $k^{th}$ column contains the $k^{th}$ eigenvector of $\nabla^2$ evaluated on the $t^{th}$ timeslice, sorted by eigenvalue. $\Box_t$ can also be written in terms of the eigenvectors
-    \begin{equation}
+    \begin{equation}\label{distillation_operator}
         \Box_{t}(\textbf{x},\textbf{y}) = \sum^N_{k=1}v_{k,t}(\textbf{x})v_{k,t}(\textbf{y})
     \end{equation}
     $\Box$ projects into $V_N$, the subspace spanned by the $N$ lowest eigenmodes, hence $\Box^2 = \Box$. Quark fields can be smeared by applying the distillation operator onto them. They inherit all symmetry properties of the unsmeared fields.
     \begin{equation}
         \chi^{(f)}(\textbf{x},t) \equiv \sum_{\textbf{y}} \Box_t(\textbf{x},\textbf{y}) \psi^{(f)}(\textbf{y},t)
     \end{equation}
+    
+\subsection{Smearing behaviour of distillation}
+    To compute physical properties of mesonic states they have to be implemented on a lattice which lattice spacing corresponds with the size of a meson. Using local meson creation operators like \mref{meson_creation_operator} are not adequate because they only create a meson on a fixed lattice poinst. Hence it is crucial to apply smearing to the states. Similar to Gaussian smearing, the distilled quark is of gaussian shape.\\
+    
+    Expanding a local meson state $\ket{\psi}$ in a basis of eigenvectors of the lattice laplacian we arrive at:
+    \begin{equation}
+        \begin{aligned}
+            \ket{\psi} &= \sum_k^M \ket{v_k}\braket{v_k}{\psi}\\
+            \psi(\textbf{x}) &= \sum_k^M \braket{\textbf{x}}{v_k}\braket{v_k}{\psi}
+        \end{aligned}
+    \end{equation}
+    If we restrict the eigenmodes to some number N, this equation becomes the completeness relation becomes the distillation operator \mref{distillation_operator}. Hence the more eigenmodes we remove, the larger the width of the wave $\psi(\textbf{x})$ becomes. If we remoce too many eigenmodes the simulation will get distorted.
     
 \subsection{Distilled meson two-point correlation functions}
     Meson two-point correlation functions of disilled fields can be constructed similar to \mref{VEV}:
@@ -126,6 +138,4 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
     \end{equation}
     
     To compute the complete perambulator one needs to compute $T \times 4 \times N$ inversions for all values of $B,t',k$ and then multiply these with the hermitian conjugate of the sources as shown in equation \mref{perambulator_explicit}. The eigenvectors were computed using code by ????, the source terms were calculated using code written by \textit{Jan Kruse} \cite{bachelor_thesis_jan} and then submitted to the program \verb+tmLQCD+ \cite{jansen_urbach_2009} which calculates the inversions. Details about the implementation can be found in section \ref{section:implementation}.
-    
-\subsection{Problems of distillation}
     
