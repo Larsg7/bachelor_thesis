@@ -26,45 +26,48 @@
     \end{equation}
     Therefore the resulting meson has quantum numbers $0(0^-)$. This was achieved by using for both propagators $(D^{-1(f)})$ the same flavor $f$. This approach reduced the amount of inversions that had to be calculated significantly. For the same reason a charmonium state was chosen in contrast to e.g. the calculation of a pion mass. Inversion for particles with higher masses converge significantly faster.
     
-    \subsubsection{Result for 5 eigenvectors}
-    In this section the result for a simulation with $N = 5$ will be presented all necessary steps discussed. In figure \ref{5_evs_full} the complete set of results from all 11 configurations can be seen.
+    To compute the mass of the charmonium state the mean value of all configurations for one value of $\Delta t$ were computed and a simple linear function was fitted to $ln(C(\Delta t))$. The results for 1, 2, 5 and 10 eigenvectors can be seen in figure \ref{1_2_5_10_evs_log}. One can see the similar shapes of all four results. Because the exponential nature of the correlation function only holds for $\Delta t \rightarrow \infty$ only a few points were chosen to be fitted. A more detailed explanation will be presented in the next section.
+    
+    The masses of these four simulations are:
+    \begin{table}[h]
+            \centering
+            \begin{tabular}{|c|c|}
+            \hline
+            \multicolumn{1}{|c|}{Number of eigenvectors} & \multicolumn{1}{c|}{Mass (MeV)} \\ \hline
+             1 & $3082 \pm 255$\\
+             2 & $3227 \pm 215$\\
+             5 & 1\\
+             10& $2919 \pm 88$\\
+              \hline
+            \end{tabular}
+            \caption{Calculated masses for the charmonium state}
+            \label{meson_masses}
+        \end{table}
+        
+    The errors were calculated using the \textit{Jackknife}\cite{jackknife} method.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{images/1_2_10_log.png}
+        \caption{Logarithmic results for 1, 2, 5 and 10 eigenvectors}
+        \label{1_2_5_10_evs_log}
+    \end{figure}
+    
+    \subsubsection{Details for 10 eigenvectors}
+    In this section the result for a simulation with $N = 10$ will be presented and all necessary steps discussed. In figure \ref{10_evs_full} the complete set of results from all 11 configurations can be seen.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=1\textwidth]{images/5ev_all_configs.png} % first figure itself
-        \caption{Data from all 11 configurations for 5 eigenvectors}
-        \label{5_evs_full}
+        \includegraphics[width=1\textwidth]{images/10_ev_full.png} % first figure itself
+        \caption{Data from all 11 configurations for 10 eigenvectors, every color represents one configuration}
+        \label{10_evs_full}
     \end{figure}
     
-    To compute the mass of the charmonium state the mean value of all configurations for one value of $\Delta t$ were computed and a simple linear function was fitted to $ln(C(\Delta t))$. The results can be seen in figure \ref{5_evs_fit}. Using the same fitting parameters the exponential function on the left graph was calculated. Because the exponential nature of the correlation function only holds for $\Delta t \rightarrow \infty$ only a few points were chosen to be fitted. They can be recognized by a different color in both graphs.
-    
-     \begin{figure}[H]
-        \centering
-        \includegraphics[width=1\textwidth]{images/5ev_fit.png} % first figure itself
-        \caption{Fit to the mean values for 5 eigenvectors}
-        \label{5_evs_fit}
-    \end{figure}
-    
-    To calculate the fitting parameters and corresponding error the \textit{Jackknife}\cite{jackknife} method was used. The simulation with 5 eigenvectors produced the following result:
-    $$ 2700 \text{MeV} \pm 45 \text{MeV} $$
-    
-    \subsubsection{Result for 2 and 10 eigenvectors}
+    In figure \ref{10_evs_log} one can see the logarithmic fit to the mean values of all 11 configurations and the data points used for fitting. An important observation is the linear region roughly between $\Delta t = 8$ and $\Delta t = 19$ while the other parts of this graph diveates from the linear path.
     
     \begin{figure}[H]
         \centering
-        \includegraphics[width=1\textwidth]{images/2ev_fit.png} % first figure itself
-        \caption{Fit to the mean values for 2 eigenvectors}
-        \label{2_evs_fit}
+        \includegraphics[width=1\textwidth]{images/10_log_fit.png}
+        \caption{Logarithmic result for 10 eigenvectors}
+        \label{10_evs_log}
     \end{figure}
-    
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=1\textwidth]{images/10ev_fit.png} % first figure itself
-        \caption{Fit to the mean values for 10 eigenvectors}
-        \label{10_evs_fit}
-    \end{figure}
-    
-    In figure \ref{2_evs_fit} and \ref{10_evs_fit} the results for 2 and 10 eigenvectors are presented respectively. When choosing the range of points to fit the function t ????. The result for 2 eigenvectors is:
-    $$ 2752 \text{MeV} \pm 33 \text{MeV} $$
-    For 10 eigenvector the simulation yielded:
-    $$ 2501 \text{MeV} \pm 392 \text{MeV} $$
