@@ -1,7 +1,7 @@
-\subsection{Meson correlation function}
+\subsection{Meson correlation functions}
     Mesons are quark-antiqaurk states which can be characterized by the following QCD quantum numbers \cite{introduction_to_lattice_hadron_spectroscopy}:
     \begin{itemize}
-        \item Spin and total angular momentum $J$, $J = 0, 1, 2,...$ (all mesons are bosons)
+        \item Spin and total angular momentum $J = 0, 1, 2,...$ (all mesons are bosons)
         \item Parity $P = \pm1$
         \item Charge conjugation $C = \pm1$
         \item Flavour quantum numbers:
@@ -27,7 +27,7 @@
                 \Operator^\dagger(n) &= \pm\bar{\psi}^{(f_2)}(n)\Gamma\psi^{(f_1)}(n)
             \end{aligned}
         \end{equation}
-        $\Gamma$ is a matrix in Dirac space which carries total momentum $J$ and parity $P$. The sign in \mref{meson_creation_operator} depends on the nature of $\Gamma$, because $\gamma_4\Gamma^\dagger\gamma_4 = \pm \Gamma$. The following table lists the possible configurations for $\Gamma$:
+        $\Gamma$ is a matrix in Dirac space which carries total momentum $J$ and parity $P$. The sign in \mref{meson_creation_operator} depends on the nature of $\Gamma$ because $\gamma_4\Gamma^\dagger\gamma_4 = \pm \Gamma$. The following table lists the possible configurations for $\Gamma$:
         \begin{table}[h]
             \centering
             \begin{tabular}{|c|c|c|c|}
@@ -40,7 +40,7 @@
               $\gamma_i\gamma_j$ & 1 & +1 & tensor \\
               \hline
             \end{tabular}
-            \caption{Possible options for $\Gamma$}
+            \caption{Possible configurations for $\Gamma$ and corresponding quantum numbers}
             \label{my-label}
         \end{table}
     \subsubsection{Meson correlation functions}
@@ -59,11 +59,11 @@
         \begin{equation}
             \int D[\psi]D[\bar{\psi}]D[A]\ \approx \prod_{x \in \Lambda}\int d\psi(x)d\bar{\psi(x)}dA(x)
         \end{equation}
-        To achieve the goal of this work, calculating the mesinic energy spectrum, one introduces a complete set of energy eigenstates $\sum_k |k\rangle\langle k| = 1$ into equation \mref{VEV}:
+        To achieve the goal of this work, calculating the mesonic energy spectrum, one introduces a complete set of energy eigenstates $\sum_k |k\rangle\langle k| = 1$ into equation \mref{VEV}:
         \begin{equation}\label{correlation_with_eigenstates}
             C(t_2 - t_1) = \sum_k \langle\Omega|\Operator^\dagger(t_2) |k\rangle\langle k| \Operator(t_1)|\Omega\rangle
         \end{equation}
-        We can now exploit that $\Operator^\dagger(t_2)$ is a Heisenberg operator and its temporal evolution can be described by
+        One can now exploit that $\Operator^\dagger(t_2)$ is a Heisenberg operator and its temporal evolution can be described by
         \begin{equation}
             \Operator^\dagger(t_2) = e^{H(t_2 - t_1)}\Operator^\dagger(t_1)e^{-H(t_2 - t_1)}
         \end{equation}
@@ -77,8 +77,8 @@
             \end{aligned}
         \end{equation}
         where $E = E_k - E_\Omega$ is the energy of the energystate $|k\rangle$ relative to the vacuum energy.\\
-        % TODO more about how to extract mass from energy
         
+        \noindent
         One can, after calculating the path integral numerically, extract the meson mass by fitting an exponential curve to the correlation function.
         To compute the correlator numerically we use definition \mref{meson_creation_operator} where the integration over the fermion fields in lattice-QCD can be done manually, the integral will be neglected for the moment:
         \begin{equation}\label{correlation_in_t}
@@ -97,6 +97,7 @@
         \end{equation}
         The $\pm$ sign is introduced from the hermition adjoint \mref{meson_creation_operator} of the meson creation operator. In the last line we have an additional minus sign because we interchanged grassmann valued fields three times.\\
         
+        \noindent
         Integration the fermion fields can be done independently for each flavor and defines the free Propagator $(D^{(f)})^{-1}(x,y)$ \cite{qcd2_script_wagner}:
         \begin{equation}
             \begin{aligned}
@@ -121,4 +122,7 @@
         \end{equation}
         The trace $Tr[...]$ acts in Dirac and in color space.\\
         
+        \noindent
         On a finite lattice the path integral in equation \mref{correlator_final} is of finite dimension and can be done numerically. It is usually calculated by averaging over gauge field configurations which can be obtained using Monte Carlo methods.
+        
+        Inverting the dirac operator directly is close to impossible, it is represented by a very large quadratic matrix which has $L_1 \times L_2 \times L_3 \times T \times 3 \times 4$ complex entries. One method is the computation of so called point-to-all propagators \cite{four_quark_correlation_functions} which describe the quark propagator from one point on the lattice to all others. This approach comes at a cost: A loss of physical information and large statistical errors.

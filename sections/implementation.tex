@@ -7,18 +7,19 @@
         \item calculation of the perambulator and distilled gamma matrix
         \item computation of the correlation function
     \end{enumerate}
-    This work builds on the contraction code written by people of Marc Wagner's group, code by Jan Kruse and the aforementioned \verb+tmLQCD+ package. For documentation about steps 1 through 3 please see \cite{bachelor_thesis_jan}.
+    This work builds on the contraction code written by members of Marc Wagner's group, code by Jan Kruse and the aforementioned \verb+tmLQCD+ package. For documentation about steps 1 through 3 please see \cite{bachelor_thesis_jan}.
 
 
 
 \subsection{Modules}
-    The following modules written in C++11 were added to the existing contraction code in \\\verb+.../distillation/+. Every module consists of a \verb+main.cpp+ and a \verb+module.h+ and \verb+module.cpp+ file. The documentation of each function can be found in the corresponding .h file.  
+    The following modules written in C++11 were added to the existing contraction code in \\\verb+.../distillation/+. Every module consists of a \verb+main.cpp+, a \verb+module.h+ and a \verb+module.cpp+ file. The documentation of each function can be found in the corresponding .h file.  
     \begin{itemize}
         \item \verb+perambulator/+: Calculates the perambulator using the sources and inverted sources.
         \item \verb+distilled_gamma/+: Computes the distilled gamma matrix given the calculated eigenvectors.
         \item \verb+correlator_trace/+: Computes the correlator for a given perambulator and distilled gamma matrix.
     \end{itemize}
     
+    \noindent
     In addition to the above a \verb+MultiVector+ class has been written which can store a matrix of arbitrary dimension. Such a matrix can then be written to the disk. The definition of this class can be found in \verb+helper/multivector.hpp+. It is used to store the perambulator, distilled gamma matrix and correlator trace.
     
     For a more technical documentation see the provided \verb+README+ files and comments inside the source code.
@@ -29,7 +30,10 @@
         \begin{verbatim}
 source.CONF-ID.time##.vec##.spin#
 source.CONF-ID.time##.vec##.spin#.CONF-ID.00.inverted\end{verbatim}
-        respectively. Here \verb+#+ stands for a digit and \verb+CONF-ID+ is usually a 4-digit number. The program will read in all sources and inverted sources for one pair $(k,k')$ into memory at once. Hence running the program needs for the gauge configurations used about 48GB of RAM.\\The program can be started by calling
+        respectively. Here \verb+#+ stands for a digit and \verb+CONF-ID+ is usually a 4-digit number. The program will read in all sources and inverted sources for one pair $(k,k')$ into memory at once. Hence running the program needs, for the gauge configurations used, about 48GB of RAM.\\
+        
+        \noindent
+        The program can be started by calling
         \begin{verbatim}
 ./perambulator path-to-sources path-to-inverted-sources conf_id
                path-to-target-dir num_vec T L\end{verbatim}
@@ -46,7 +50,7 @@ gamma.CONF-ID.num_vec##.time##\end{verbatim}
         The program can be started by calling
         \begin{verbatim}
 ./gamma path-to-ev conf_id path-to-target-dir num-vec T L\end{verbatim}
-        \verb+path-to-ev+ is the path to the file which holds the eigenvector.
+        \verb+path-to-ev+ is the path to the file which holds the eigenvectors.
         
     \subsubsection{Computation of the correlation function}
         To calculate the correlation function call
@@ -59,10 +63,12 @@ trace.CONF-ID.num_vec##.time##\end{verbatim}
         This file will contain all $T^2$ elements of the correlation function. To read the trace and calculate the mean values for every $\Delta t$ run
         \begin{verbatim}
 ./trace -r path-to-trace T\end{verbatim}
-        This will print all values in the format $\Delta t$ $real(C)$ $imag(C)$ where $C$ is the correlation function. The output of this operation is the basis for the results in section \ref{section:results}.
+        This will print all values in the format 
+        $$\Delta t\ real(C)\ imag(C)$$
+        where $C$ is the correlation function. The output of this operation is the basis for the results in section \ref{section:results}.
         
     \subsubsection{Python control script}
-        In addition to the modules already mentioned a python script to control the simulation was written. It can find all files necessary for the simulation and can set up job scripts automatically. The script can be found inside the folder \verb+.../distillation/scripts/+ alongside its documentation. To start the script run
+        In addition to the modules already mentioned a python script to control the simulation was written. It can find all files necessary for the simulation and can set up slurm job scripts (which are necessary on the \textit{FUCHS} super computer) automatically. The script can be found inside the folder \verb+.../distillation/scripts/+ alongside its documentation. To start the script run
         \begin{verbatim}
 ./run.py\end{verbatim}
         The script will walk you through the setup process. It is written in python version 3.6.

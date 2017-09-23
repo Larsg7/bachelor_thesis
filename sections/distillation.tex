@@ -3,21 +3,23 @@
 The term distillation describes a quark-field smearing algorithm to compute hadron correlation functions. It was first described in 2009 by Michael Peardon \cite{distillation_paper}. Distillation promises efficient computations of all-to-all quark propagators.\\
 
 \subsection{Distillation operator}
-    Smearing is a method to ??? used to apply a smoothing function to the field before applying the creation operators. Smearing should remove short-range modes while keeping as many symmetries as possible. Distillation makes use of a gauge-covariant quark smearing based on the lattice Laplacian which is defined as follows
+    Smearing is a method to apply a smoothing function to the quark field before applying the creation operators. Smearing should remove short-range modes while keeping as many symmetries as possible. Distillation makes use of a gauge-covariant quark smearing based on the lattice laplacian which is defined as follows
 	\begin{equation}
 	    -\nabla^2_{xy} = 6\delta_{xy} - \sum^3_{j=1}(\tilde{U}_j(x,t)\delta_{x+j,y} + \tilde{U}^\dagger_j(x-y,t)\delta_{x-j,y})
 	\end{equation}
-	
+	\noindent
 	Starting from the lattice Laplacian one can define a simple smearing operator
 	\begin{equation}
 	    J_{\omega,n}(t) = (1+\frac{\omega\nabla^2(t)}{n})^n
 	\end{equation}
 	
-	$\omega$ and $n$ are tunable parameters. For large $n$, $J$ defines the exponential of $\omega\nabla^2$ which suppresses higher eigenmodes of the laplacian hence only a few of the lowest modes contribute to $J$. % WHY?
+	\noindent
+	where $\omega$ and $n$ are tunable parameters. For large $n$, $J$ defines the exponential of $\omega\nabla^2$ which suppresses higher eigenmodes of the laplacian hence only a few of the lowest modes contribute to $J$ remain. % WHY?
 	\begin{equation}
         \lim_{n\rightarrow\infty} J_{\omega,n}(t) = \exp(\omega\nabla^2) \equiv J_\omega
 	\end{equation}
 	
+	\noindent
     The lattice laplacian is a gauge-covariant, linear, negative-definite and hermitian operator acting on a $M$ dimensional Hilbert space. On each timeslice its eigenvectors are orthogonal and one can find an orthonormal basis of $\mathbb{C}^M$
     \cite{bachelor_thesis_jan}
     \begin{equation}\label{othonormal_eigenvectors}
@@ -27,8 +29,9 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
     \begin{equation}
         \nabla^2\ket{v_k} = \lambda_k\ket{v_k}
     \end{equation}
-    The eigenvalues of the lattice laplacian are semi-negative $\lambda_k \in (-\infty,0]$ and $\lambda_{k+1} < \lambda_k$.\\
+    The eigenvalues of the lattice laplacian are semi-negative $\lambda_k \in (-\infty,0]$ and $\lambda_{k+1} < \lambda_k$ holds.\\
     
+    \noindent
     Using the above we can now expand $J_\omega$ in the limit $n\rightarrow\infty$ using \mref{othonormal_eigenvectors}:
     \begin{equation}
         \begin{aligned}
@@ -55,43 +58,45 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
     \end{equation}
     
 \subsection{Smearing behaviour of distillation}
-    To compute physical properties of mesonic states they have to be implemented on a lattice which lattice spacing corresponds with the size of a meson. Using local meson creation operators like \mref{meson_creation_operator} are not adequate because they only create a meson on a fixed lattice poinst. Hence it is crucial to apply smearing to the states. Similar to Gaussian smearing, the distilled quark is of gaussian shape.\\
+    To compute physical properties of mesonic states they have to be implemented on a lattice which lattice spacing corresponds with the size of a meson. Using local meson creation operators like \mref{meson_creation_operator} are not adequate because they only create a meson on a fixed lattice poinst. Hence it is crucial to apply smearing to the states. Similar to Gaussian smearing, the distilled quark is of gaussian shape.
     
-    Expanding a local meson state $\ket{\psi}$ in a basis of eigenvectors of the lattice laplacian we arrive at:
+    Expanding a local meson state $\ket{\psi}$ in a basis of eigenvectors of the lattice laplacian the state can be written as
     \begin{equation}
         \begin{aligned}
             \ket{\psi} &= \sum_k^M \ket{v_k}\braket{v_k}{\psi}\\
             \psi(\textbf{x}) &= \sum_k^M \braket{\textbf{x}}{v_k}\braket{v_k}{\psi}
         \end{aligned}
     \end{equation}
-    If we restrict the eigenmodes to some number N, this equation becomes the completeness relation becomes the distillation operator \mref{distillation_operator}. Hence the more eigenmodes we remove, the larger the width of the wave $\psi(\textbf{x})$ becomes. If we remoce too many eigenmodes the simulation will get distorted.
+    If we restrict the eigenmodes to some number N, this equation becomes the distillation operator \mref{distillation_operator}. Hence the more eigenmodes we remove, the larger the width of the wave $\psi(\textbf{x})$ becomes. If too many eigenmodes are removed the simulation will get distorted.
     
 \subsection{Distilled meson two-point correlation functions}
     Meson two-point correlation functions of disilled fields can be constructed similar to \mref{VEV}:
     \begin{equation}
         \begin{aligned}
             C(t_2 - t_1) &= \langle\Omega| \Operator^\dagger(t_2) \Operator(t_1)|\Omega\rangle\\
-            = \pm\langle&\Omega| \bar{\psi}^{(f_1)}(\textbf{x}_1,t_2)\Box_{t_2}(\textbf{x}_1,\textbf{y}_1)\Gamma^A
+            &= \pm\langle\Omega| \bar{\psi}^{(f_1)}(\textbf{x}_1,t_2)\Box_{t_2}(\textbf{x}_1,\textbf{y}_1)\Gamma^A
             \Box_{t_2}(\textbf{y}_1,\textbf{x}_2)\psi^{(f_1)}(\textbf{x}_2,t_2)\\
             &\times \bar{\psi}^{(f_2)}(\textbf{x}_3,t_1)\Box_{t_1}(\textbf{x}_3,\textbf{y}_2)\Gamma^B
             \Box_{t_1}(\textbf{y}_2,\textbf{x}_4)\psi^{(f_2)}(\textbf{x}_4,t_1) |\Omega\rangle
         \end{aligned}
     \end{equation}
-
+    \noindent
     Executing the same steps as in \mref{correlator_final} yields
     \begin{equation}
         \begin{aligned}
-            C(t,t') &= \langle Tr[\Phi^B(t')\tau(t',t)\Phi^A(t)\tau(t,t')] \rangle
+            C(t_2 - t_1) &= \langle Tr[\Phi^B(t_2)\tau^{(f_1)}(t_2,t_1)\Phi^A(t_1)\tau^{(f_2)}(t_1,t_2)] \rangle
         \end{aligned}
     \end{equation}
     In the last line the following definitions were used
     \begin{equation}
         \begin{aligned}\label{def_gamma_and_perambulator}
-            \Phi_{AB}^A(t) &\equiv V^\dagger(t)\Gamma_{AB}^A(t)V(t)\\
-            \tau_{AB}(t,t') &\equiv V^\dagger(t)(D^{-1})_{AB}(t,t')V(t')
+            \Phi_{AB}^A(t) &\equiv V_{t}^\dagger\Gamma_{AB}^A(t)V_t\\
+            \tau_{AB}(t_2,t_1) &\equiv V_{t_2}^\dagger(D^{-1})_{AB}(t_2,t_1)V_{t_1}
         \end{aligned}
     \end{equation}
-    $\Phi^A(t)$ is called the distilled gamma matrix and $\tau(t,t')$ the perambulator. The latter contains information about the quark propagator and can be independently computed from the former.
+    $\Phi^A(t)$ is called the distilled gamma matrix and $\tau(t_2,t_1)$ the perambulator. The latter contains information about the quark propagator from every spatial point on timeslice $t$ to every spatial point on timeslice $t'$.
+    
+    Similar to $V_t$, $\tau_{AB}(t_2,t_1)$ is a complex $N \times N$ matrix where $N$ is the number of eigenvectors used. The complete perambulator holds therefore $T^2 \times 4^2 \times N^2$ complex numbers. Similarly $\Phi_{AB}^A(t)$ is also a $N \times N$ matrix and the complete distilled gamma matrix has $T \times N^2$ complex entries. Both matrices can be calculated independently from each other.
     
 \subsection{Computation of the perambulator}
     The propagator $(D^{-1(f)})^{ab}_{AB}(x;y)$ is defined by the following equation \cite{four_quark_correlation_functions}
@@ -108,15 +113,15 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
     where $\xi(x)$ is the so called source term, also a fermionic field. Recall the definition of the perumbulator \mref{def_gamma_and_perambulator}, writing it explicitly will enable us to identify the inversion in the last equation \cite{bachelor_thesis_jan}
     \begin{equation}\label{perambulator_explicit}
         \begin{aligned}
-            &\tau^{(f)}_{AB}(t,t') \equiv V^\dagger_t(D^{-1})_{AB}(t,t')V_{t'}\\
+            &\tau_{AB}(t_2,t_1) \equiv V^\dagger_{t_2}(D^{-1})_{AB}(t_2,t_1)V_{t_1}\\
             &= \sum_{k=1,k'=1}^N \sum_{x,y}
-            v_{k,t}^{\dagger a}(\textbf{x}) 
-            (D^{-1(f)})^{ab}_{AB}(\textbf{x},t;\textbf{y},t')
-            v_{k',t'}^{b}(\textbf{y})\\
+            v_{k,t_2}^{\dagger a}(\textbf{x}) 
+            (D^{-1(f)})^{ab}_{AB}(\textbf{x},t_2;\textbf{y},t_1)
+            v_{k',t_1}^{b}(\textbf{y})\\
             &= \sum_{k=1,k'=1}^N \sum_{\textbf{x},\textbf{y},x_0,y_0}
-            v_{k,t}^{\dagger a}(\textbf{x})\delta_{AA'}\delta_{tx_0}
+            v_{k,t_2}^{\dagger a}(\textbf{x})\delta_{AA'}\delta_{t_2 x_0}
             (D^{-1(f)})^{ab}_{A'B'}(\textbf{x},x_0;\textbf{y},y_0)
-            v_{k',t'}^{b}(\textbf{y})\delta_{BB'}\delta_{t'y_0}
+            v_{k',t_1}^{b}(\textbf{y})\delta_{BB'}\delta_{t_1 y_0}
         \end{aligned}
     \end{equation}
     The inversion \mref{inversion_term} can now be identified
@@ -124,18 +129,21 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
         \psi^{(f)a}_{A;B,t',k'}(\textbf{x},x_0) = (D^{-1(f)})^{ab}_{A'B'}(\textbf{x},x_0;\textbf{y},y_0)
             v_{k',t'}^{b}(\textbf{y})\delta_{BB'}\delta_{t'y_0}
     \end{equation}
-    The indices $B,t',k'$ mean that $\psi^{(f)a}_{A;B,t',k}(\textbf{x},t)$ is defined on time slice $t'$ and spin index $B$ for the $k'^{th}$ eigenvector.\\
+    The indices $B,t',k'$ express that $\psi^{(f)a}_{A;B,t',k}(\textbf{x},t)$ is defined on time slice $t'$ and spin index $B$ for the $k'^{th}$ eigenvector.\\
     
+    \noindent
     The source terms $\xi(x)$ can also be identified:
     \begin{equation}
         \xi^a_{B;B',t',k'}(\textbf{y},y_0) =  v_{k',t'}^{b}(\textbf{y})\delta_{BB'}\delta_{t'y_0}
     \end{equation}
     The source terms are fields of the needed size $L^3 \times 4 \times 3$ but have non-zero entries only at one specific spin index and timeslice.\\
     
+    \noindent
     Finally, equation \mref{perambulator_explicit} becomes:
     \begin{equation}\label{perambulator_with_inversion}
-        \tau^{(f)}_{A'B'}(t,t') = \sum_{k=1,k'=1}^N \sum_{\textbf{x},x_0} \xi^{\dagger a}_{A;A',t,k}(\textbf{x},x_0) \psi^{(f)a}_{A;B',t',k'}(\textbf{x},x_0) 
+        \tau^{(f)}_{A'B'}(t_2,t_1) = \sum_{k=1,k'=1}^N \sum_{\textbf{x},x_0;\textbf{y},y_0} \xi^{\dagger a}_{A;A',t_2,k}(\textbf{x},x_0) \psi^{(f)a}_{A;B',t_1,k'}(\textbf{y},y_0) 
     \end{equation}
     
-    To compute the complete perambulator one needs to compute $T \times 4 \times N$ inversions for all values of $B,t',k$ and then multiply these with the hermitian conjugate of the sources as shown in equation \mref{perambulator_explicit}. The eigenvectors were computed using code by ????, the source terms were calculated using code written by \textit{Jan Kruse} \cite{bachelor_thesis_jan} and then submitted to the program \verb+tmLQCD+ \cite{jansen_urbach_2009} which calculates the inversions. Details about the implementation can be found in section \ref{section:implementation}.
+    \noindent
+    To compute the complete perambulator one needs to compute $T \times 4 \times N$ inversions for all values of $B,t',k$ and then multiply these with the hermitian conjugate of the sources as shown in equation \mref{perambulator_explicit}. The eigenvectors were computed using a program provided inside the contraction code written by members of Marc Wagner's work group. The source terms were calculated using code written by \textit{Jan Kruse} \cite{bachelor_thesis_jan} and then submitted to the program \verb+tmLQCD+ \cite{jansen_urbach_2009} which calculates the inversions. Details about the implementation can be found in section \ref{section:implementation}.
     
