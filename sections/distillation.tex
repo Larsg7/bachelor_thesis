@@ -58,7 +58,7 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
     \end{equation}
     
 \subsection{Smearing behaviour of distillation}
-    To compute physical properties of mesonic states they have to be implemented on a lattice which lattice spacing corresponds with the size of a meson. Using local meson creation operators like \mref{meson_creation_operator} are not adequate because they only create a meson on a fixed lattice poinst. Hence it is crucial to apply smearing to the states. Similar to Gaussian smearing, the distilled quark is of gaussian shape.
+    To compute physical properties of mesonic states they have to be implemented on a lattice which lattice spacing corresponds with the size of a meson. Using local meson creation operators like \mref{meson_creation_operator} are not adequate because they only create a meson on a fixed lattice points. Hence it is crucial to apply smearing to the states. Similar to Gaussian smearing, the distilled quark is of gaussian shape.
     
     Expanding a local meson state $\ket{\psi}$ in a basis of eigenvectors of the lattice laplacian the state can be written as
     \begin{equation}
@@ -70,7 +70,7 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
     If we restrict the eigenmodes to some number N, this equation becomes the distillation operator \mref{distillation_operator}. Hence the more eigenmodes we remove, the larger the width of the wave $\psi(\textbf{x})$ becomes. If too many eigenmodes are removed the simulation will get distorted.
     
 \subsection{Distilled meson two-point correlation functions}
-    Meson two-point correlation functions of disilled fields can be constructed similar to \mref{VEV}:
+    Meson two-point correlation functions of distilled fields can be constructed similar to \mref{VEV}:
     \begin{equation}
         \begin{aligned}
             C(t_2 - t_1) &= \langle\Omega| \Operator^\dagger(t_2) \Operator(t_1)|\Omega\rangle\\

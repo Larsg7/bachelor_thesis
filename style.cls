@@ -25,9 +25,17 @@
 \newcommand{\Operator}{\mathcal{O}}
 \newcommand{\mref}[1]{(\ref{#1})}
 
+\renewcommand{\bibsection}{}
+
 \DeclarePairedDelimiter\bra{\langle}{\rvert}
 \DeclarePairedDelimiter\ket{\lvert}{\rangle}
 \DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1 \delimsize\vert #2}
 
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancyhf{}
+\fancyhead[L]{\rightmark}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{1pt}
 
 \endinput
