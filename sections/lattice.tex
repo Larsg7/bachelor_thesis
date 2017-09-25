@@ -1,4 +1,4 @@
-\subsection{Lattice-QCD}
+\subsection{Lattice QCD}
 	When calculating the gluon propagator in one loop perturbation theory \cite{qcd2_script_philipsen}
 	\begin{equation}
 	    \langle 0|T(A^a_\mu(x)A^b_\nu)|0\rangle = \frac{\delta}{i\delta J^{a\mu}} \frac{\delta}{i\delta J^{b\nu}} Z[J]\Big|_{J=0}
@@ -15,10 +15,10 @@
 	\begin{equation}
 	    \int\frac{d^4q}{(2\pi)^4}\frac{1}{q^2+i\epsilon}
 	\end{equation}
-	which diverges for $q\rightarrow\infty$. To calculate these expressions we have to regularize the integral. One regularization scheme is lattice-QCD.\\
+	which diverges for $q\rightarrow\infty$. To calculate these expressions we have to regularize the integral. One regularization scheme is lattice QCD.\\
 	
 	\noindent
-	In lattice-QCD one defines a hypercubic, discrete spacetime lattice
+	In lattice QCD one defines a hypercubic, discrete spacetime lattice
 	\begin{equation}
 	    \Lambda = \{x|\frac{|x^\mu|}{a} \in \{0,L_\mu\}\}, \mu = 1,2,3,4
 	\end{equation}
@@ -29,7 +29,7 @@
     where $\hat{\boldsymbol{\mu}}$ defines the unit vector along the $\mu$-axis.\\
     
     \noindent
-	In lattice-QCD the action has to be redefined replacing $A_\mu$ by so called link variables $U_\mu$ which preserve all symmetries of the action.
+	In lattice QCD the action has to be redefined replacing $A_\mu$ by so called link variables $U_\mu$ which preserve all symmetries of the action.
 	\begin{equation}
 	    S_{QCD}[\psi,\bar{\psi},A] \rightarrow S_{Lattice-QCD}[\psi,\bar{\psi},U]
 	\end{equation}
@@ -39,7 +39,7 @@
 	\end{equation}
 	A closed loop of link variables is gauge invariant and the simplest one is called plaquette $U_{\mu\nu}$ \cite{Rothe2012}. A plaquette in the $\mu - \nu$ plane is defined by
 	\begin{equation}
-	    U_{\mu\nu}(x) = U_\mu(x)U_\nu(x+\hat{\mu})U_\nu^\dagger(x+\hat{\nu})U_\nu^\dagger(x)
+	    U_{\mu\nu}(x) = U_\mu(x)U_\nu(x+\hat{\mu})U_\mu^\dagger(x+\hat{\nu})U_\nu^\dagger(x)
 	\end{equation}
 	where the link variables are path ordered. The simplest formulation of the lattice action in U(1) symmetry can be derived from this plaquette \cite{introduction_to_lattice_qcd}
 	\begin{equation}

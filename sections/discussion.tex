@@ -7,7 +7,7 @@ The complexity of the simulation increases linearly with the number of configura
 
 \begin{itemize}
     \item Naturally the time to calculate all eigenvectors depends \textbf{linearly} on the number of eigenvectors.
-    \item The number of source and inverted source terms depends \textbf{linearly} on the number of eigenvectors as well. Therefore the same holds true for the time to calculate these.
+    \item The number of source and inverted source terms depend \textbf{linearly} on the number of eigenvectors as well. Therefore the same holds true for the time to calculate these.
     \item Computation times of the distilled gamma matrix increases \textbf{quadratically} with the number of eigenvectors.
     \item The time to calculate the perambulator depends quadratically on the number of source terms used and therefore also \textbf{quadratically} on the number of eigenvectors.
     \item As the last step the calculation of the correlation function depends on the number of eigenvectors \textbf{to the fourth}.
@@ -21,9 +21,9 @@ The complexity of the simulation increases linearly with the number of configura
     \end{figure}
 
 \noindent
-The inversion of the source terms usually takes the longest, followed by the computation of the perambulator. Calculating time for the eigenvectors, source terms and gamma matrix can be safely neglected. The correlator (with its $N^4$ dependence) on the other hand can also be neglected for small ($N<5$) number of eigenvectors but starts to play a major role when increasing the number of eigenvectors.
+The inversion of the source terms took for the number of eigenvectors shown in section \ref{section:results} the longest, followed by the computation of the perambulator. Calculating time for the eigenvectors, source terms and gamma matrix can be safely neglected in comparison. The correlator (with its $N^4$ dependence) on the other hand can also be neglected for small ($N<5$) number of eigenvectors but starts to play a major role when increasing the number of eigenvectors.
 
-Inverting a single source term takes, when calculating the mass of a charmonium state, about 20 minutes per thread on the \textit{FUCHS} super computer. Calculating the perambulator for one eigenvector takes about 5 minutes. The last step, computing the correlator, needs for a single eigenvector circa 0.3 seconds. For the perambulator and correlator the time was calculated from the time each step takes when using 5 eigenvectors.
+Inverting a single source term takes, when calculating the mass of a charmonium state, about 20 minutes per thread on the \textit{FUCHS} super computer. Calculating the perambulator for one eigenvector takes about 5 minutes. The last step, computing the correlator, needs for a single eigenvector circa 0.3 seconds. For the perambulator and correlator the time was calculated from the time each step runs for when using 5 eigenvectors.
 
 In figure \ref{time_of_sim} a plot of the time each of these steps will run for with respect to the number of eigenvectors can be seen.
 

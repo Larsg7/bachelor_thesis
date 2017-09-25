@@ -1,6 +1,5 @@
 	
-% descibe distillation
-The term distillation describes a quark-field smearing algorithm to compute hadron correlation functions. It was first described in 2009 by Michael Peardon \cite{distillation_paper}. Distillation promises efficient computations of all-to-all quark propagators.\\
+The term distillation describes a quark-field smearing algorithm to compute hadron correlation functions. It was first described in 2009 by Michael Peardon \cite{distillation_paper}. Distillation promises efficient computations of all-to-all quark propagators.
 
 \subsection{Distillation operator}
     Smearing is a method to apply a smoothing function to the quark field before applying the creation operators. Smearing should remove short-range modes while keeping as many symmetries as possible. Distillation makes use of a gauge-covariant quark smearing based on the lattice laplacian which is defined as follows
@@ -14,7 +13,7 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
 	\end{equation}
 	
 	\noindent
-	where $\omega$ and $n$ are tunable parameters. For large $n$, $J$ defines the exponential of $\omega\nabla^2$ which suppresses higher eigenmodes of the laplacian hence only a few of the lowest modes contribute to $J$ remain. % WHY?
+	where $\omega$ and $n$ are tunable parameters. For large $n$, $J$ defines the exponential of $\omega\nabla^2$ which suppresses higher eigenmodes of the laplacian, hence only a few of the lowest modes contribute to $J$.
 	\begin{equation}
         \lim_{n\rightarrow\infty} J_{\omega,n}(t) = \exp(\omega\nabla^2) \equiv J_\omega
 	\end{equation}
@@ -50,7 +49,7 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
     \end{equation}
     $V_t$ is a $M \times N$ matrix which $k^{th}$ column contains the $k^{th}$ eigenvector of $\nabla^2$ evaluated on the $t^{th}$ timeslice, sorted by eigenvalue. $\Box_t$ can also be written in terms of the eigenvectors
     \begin{equation}\label{distillation_operator}
-        \Box_{t}(\textbf{x},\textbf{y}) = \sum^N_{k=1}v_{k,t}(\textbf{x})v_{k,t}(\textbf{y})
+        \Box_{t}(\textbf{x},\textbf{y}) = \sum^N_{k=1}v_{k,t}(\textbf{x})v^\dagger_{k,t}(\textbf{y})
     \end{equation}
     $\Box$ projects into $V_N$, the subspace spanned by the $N$ lowest eigenmodes, hence $\Box^2 = \Box$. Quark fields can be smeared by applying the distillation operator onto them. They inherit all symmetry properties of the unsmeared fields.
     \begin{equation}
@@ -58,7 +57,7 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
     \end{equation}
     
 \subsection{Smearing behaviour of distillation}
-    To compute physical properties of mesonic states they have to be implemented on a lattice which lattice spacing corresponds with the size of a meson. Using local meson creation operators like \mref{meson_creation_operator} are not adequate because they only create a meson on a fixed lattice points. Hence it is crucial to apply smearing to the states. Similar to Gaussian smearing, the distilled quark is of gaussian shape.
+    To compute physical properties of mesonic states they have to be implemented on a lattice which lattice spacing corresponds to the size of a meson. Using local meson creation operators like \mref{meson_creation_operator} are not adequate because they only create a meson on a fixed lattice points. Hence it is crucial to apply smearing to the states. Similar to Gaussian smearing, the distilled quark is of gaussian shape.
     
     Expanding a local meson state $\ket{\psi}$ in a basis of eigenvectors of the lattice laplacian the state can be written as
     \begin{equation}
@@ -96,7 +95,7 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
     \end{equation}
     $\Phi^A(t)$ is called the distilled gamma matrix and $\tau(t_2,t_1)$ the perambulator. The latter contains information about the quark propagator from every spatial point on timeslice $t$ to every spatial point on timeslice $t'$.
     
-    Similar to $V_t$, $\tau_{AB}(t_2,t_1)$ is a complex $N \times N$ matrix where $N$ is the number of eigenvectors used. The complete perambulator holds therefore $T^2 \times 4^2 \times N^2$ complex numbers. Similarly $\Phi_{AB}^A(t)$ is also a $N \times N$ matrix and the complete distilled gamma matrix has $T \times N^2$ complex entries. Both matrices can be calculated independently from each other.
+    Similar to $V_t$, $\tau_{AB}(t_2,t_1)$ is a complex $N \times N$ matrix where $N$ is the number of eigenvectors used. The complete perambulator holds therefore $T^2 \times 4^2 \times N^2$ complex numbers. Similarly $\Phi_{AB}^A(t)$ is also a $N \times N$ matrix and the complete distilled gamma matrix has $T \times 4^2 \times N^2$ complex entries. Both matrices can be calculated independently from each other.
     
 \subsection{Computation of the perambulator}
     The propagator $(D^{-1(f)})^{ab}_{AB}(x;y)$ is defined by the following equation \cite{four_quark_correlation_functions}
@@ -110,7 +109,7 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
             &\psi^{(f)b}_{B}(y) = \sum_{x}(D^{-1(f)})^{ba}_{BA}(y,x)\xi^a_A(x)
         \end{aligned}
     \end{equation}
-    where $\xi(x)$ is the so called source term, also a fermionic field. Recall the definition of the perumbulator \mref{def_gamma_and_perambulator}, writing it explicitly will enable us to identify the inversion in the last equation \cite{bachelor_thesis_jan}
+    where $\xi(x)$ is the so called source term, also a fermionic field. Recall the definition of the perambulator \mref{def_gamma_and_perambulator}, writing it explicitly will enable us to identify the inversion in the last equation \cite{bachelor_thesis_jan}
     \begin{equation}\label{perambulator_explicit}
         \begin{aligned}
             &\tau_{AB}(t_2,t_1) \equiv V^\dagger_{t_2}(D^{-1})_{AB}(t_2,t_1)V_{t_1}\\
@@ -136,7 +135,7 @@ The term distillation describes a quark-field smearing algorithm to compute hadr
     \begin{equation}
         \xi^a_{B;B',t',k'}(\textbf{y},y_0) =  v_{k',t'}^{b}(\textbf{y})\delta_{BB'}\delta_{t'y_0}
     \end{equation}
-    The source terms are fields of the needed size $L^3 \times 4 \times 3$ but have non-zero entries only at one specific spin index and timeslice.\\
+    The source terms are fields of the necessary size $L^3 \times 4 \times 3$ but have non-zero entries only at one specific spin index and timeslice.\\
     
     \noindent
     Finally, equation \mref{perambulator_explicit} becomes:

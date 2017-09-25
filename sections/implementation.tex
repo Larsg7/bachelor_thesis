@@ -1,5 +1,5 @@
 \subsection{Overview}
-    The computation of the correlation function on one gauge configurations can be broken down into the following steps
+    The computation of the correlation function on one gauge configuration can be broken down into the following steps
     \begin{enumerate}
         \item computation of $N$ eigenvectors
         \item generation of $T \times 4 \times N$ sources
@@ -30,7 +30,7 @@
         \begin{verbatim}
 source.CONF-ID.time##.vec##.spin#
 source.CONF-ID.time##.vec##.spin#.CONF-ID.00.inverted\end{verbatim}
-        respectively. Here \verb+#+ stands for a digit and \verb+CONF-ID+ is usually a 4-digit number. The program will read in all sources and inverted sources for one pair $(k,k')$ into memory at once. Hence running the program needs, for the gauge configurations used, about 48GB of RAM.\\
+        respectively. Here \verb+#+ stands for a digit and \verb+CONF-ID+ is usually a 4-digit number. The program will read in all sources and inverted sources for one pair $(k,k')$ into memory at once. Hence running the program uses, for the gauge configurations used, about 48GB of RAM.\\
         
         \noindent
         The program can be started by calling
